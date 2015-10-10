@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 
   def index
     @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.all.order(rating: :desc)
+    @articles = @sub_category.articles.all.order(rating: :desc)
   end
 
   def show

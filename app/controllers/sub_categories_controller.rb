@@ -2,7 +2,7 @@ class SubCategoriesController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @sub_category = @category.sub_categories.all.order(rating: :desc)
+    @sub_category = @category.sub_categories.all
   end
 
   def new

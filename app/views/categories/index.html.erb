@@ -1,8 +1,6 @@
-
-
 <div class="one" align="center">
 <% @category.each do |a| %>
-  <a href="#">
+  <a href="<%= 'sub_categories?category_id=' + a.id.to_s %>">
     <div class="article">
       <div class="head">
         <div class="title">
@@ -13,10 +11,12 @@
           <span style="font-size: 35px">
             <%= a.sub_categories.count%>
           </span>
-          <p>Sub Categories</p>
+          <p><%= a.sub_categories.count!=1 ? "Sub Category".pluralize : "Sub Category".singularize %></p>
         </div>
       </div>
     </div>
   </a>
 <% end %>
 </div>
+
+<%#= link_to("edit", :controller => 'categories', :action => 'edit', :id => a.id)%>

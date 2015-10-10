@@ -1,2 +1,23 @@
-<h1>SubCategories#index</h1>
-<p>Find me in app/views/sub_categories/index.html.erb</p>
+<div class="one" align="center">
+  <% @sub_category.each do |a| %>
+      <!--<a href="<%#= 'categories/' + a.id.to_s + '/edit'%>">-->
+      <a href="<%= 'articles?sub_category_id=' + a.id.to_s %>">
+        <div class="article">
+          <div class="head">
+            <div class="title">
+              <h2><%= a.name %></h2>
+              <h6><%= a.description %></h6>
+            </div>
+            <div class="count">
+          <span style="font-size: 35px">
+            <%= a.articles.count%>
+          </span>
+              <p><%= a.articles.count!=1 ? "Articles".pluralize : "Articles".singularize %></p>
+            </div>
+          </div>
+        </div>
+      </a>
+  <% end %>
+</div>
+
+<%#= link_to("edit", :controller => 'categories', :action => 'edit', :id => a.id)%>

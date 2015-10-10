@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   get 'sessions/create'
 
-  resource :articles, :categories
+  resources :articles, :categories, :sub_categories
 
-  resource :users do
+  resources :users do
     get 'index'
   end
 
