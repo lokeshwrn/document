@@ -1,0 +1,52 @@
+<style>
+    .form_container_right{
+        width: 50%;
+        float: left;
+    }
+    .form_container_left{
+        width: 50%;
+        float: right;
+    }
+    .form_content{
+        height: 250px;
+        width: 100%;
+    }
+    .form_field{
+        width: 100%;
+        height: 25px;
+    }
+    .form_element{
+        padding: 10px 0px;
+        margin-right:10%;
+    }
+</style>
+<%#= @header %>
+<%= form_for @article do |f| %>
+    <div class="form_container_right">
+      <div class="form_element">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form_field' %>
+      </div>
+      <div class="form_element">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form_field' %>
+      </div>
+      <div class="form_element">
+        <%= f.label :reference_url %>
+        <%= f.text_field :reference_url, class: 'form_field' %>
+      </div>
+      <div class="form_element">
+        <%= f.label :github_url %>
+        <%= f.text_field :github_url, class: 'form_field' %>
+      </div>
+    </div>
+    <div class="form_container_left">
+      <%= f.label :content %>
+      <%= f.text_area :content, class: 'form_content' %>
+    </div>
+
+    <div class="form_container_bottom" align="center">
+      <%= f.submit :submit, class: 'form_submit' %>
+    </div>
+
+<% end %>

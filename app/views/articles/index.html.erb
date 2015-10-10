@@ -1,0 +1,182 @@
+<style>
+
+
+
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    a{
+        color:inherit;
+        text-decoration: none;
+        font-weight: inherit;
+    }
+    p{
+        font-size: 14px;
+
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-weight: 400;
+    }
+    h1{
+        font-size: 50px;
+        padding: 8px 0px;
+    }
+    h2{
+        font-size: 40px;
+        padding: 5px 0px;
+    }
+    h3{
+        font-size: 35px;
+        padding: 3px 0px;
+    }
+    h4{
+        font-size: 30px;
+    }
+    h5{
+        font-size: 20px;
+    }
+    h6{
+        font-size: 16px;
+    }
+
+    #wrapper{
+        width: 1124px;
+        margin: 0px auto;
+    }
+    #header{
+        width:100%;
+        float:left;
+        border-bottom: 1px solid;
+    }
+    #bgimg{
+        background-image: url(img.jpg);
+        height: 700px;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+
+
+
+
+
+
+
+
+
+
+.article{
+        width: 28%;
+        float: left;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid white;
+    }
+    .article:hover{
+        border:1px solid black;
+    }
+    .head{
+        width: 100%;
+        float: left;
+
+    }
+    .title{
+        width: 65%;
+        border-bottom: 1px solid black;
+        padding: 2%;
+        margin: 2%;
+        float: left;
+        /*border: 1px solid red;*/
+    }
+    .rating{
+        width: 22%;
+        float: left;
+        color:green;
+        padding: 5% 2%;
+        margin: 2%;
+        box-sizing: border-box;
+    }
+    .content{
+        height: 68px;
+        overflow: hidden;
+        float: left;
+    }
+    .fa-star{
+        color:cornflowerblue;
+    }
+    .fa-star-o{
+        color:black;
+    }
+
+
+    a:hover{
+        color: cornflowerblue;
+    }
+
+
+    @media screen and (min-width: 765px) and (max-width:1024px) {
+        #wrapper{
+            width: 755px;
+            margin: 0px auto;
+            padding: 0px 5px;
+        }
+        .article{
+            width:30%;
+            float:left;
+            margin:0px;
+        }
+        .title{width:60%;float:left;}
+        .rating{width:28%;float:left;}
+        .title span h6{font-size:11px;}
+    }
+
+    @media screen and (min-width: 600px) and (max-width:768px) {
+        .article{
+            width:47%;
+        }
+    }
+
+    @media screen and (max-width:599px) {
+        .article{
+            width:90%;
+        }
+    }
+
+
+    body {
+        /*font-family: 'Roboto', sans-serif;*/
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+</style>
+<% @articles.each do |a| %>
+
+    <div class="article">
+      <div class="head">
+        <div class="title">
+        <span><a href="#"><h2>
+          <%#= link_to "Hloooo", :controller => "articles", :action => "edit", params["id"] => 1%>
+          <%#= link_to "Hloooo", edit_article_path, params[:id] => 1 %>
+          <%= a.title.upcase %>
+        </h2></a></span>
+          <span><h6>By <%= "hello".upcase%> | <%= "welcom"%> Comments</h6></span>
+        </div>
+
+        <div class="rating" align="center">
+          <%(1..(a.rating)).each do |q|%>
+              <span><i class="fa fa-star"></i></span>
+          <%end%>
+          <%(1..(5-a.rating)).each do |q|%>
+              <span><i class="fa fa-star-o"></i></span>
+          <%end%>
+        </div>
+
+      </div>
+      <div class="content">
+        <p><%= a.description%></p>
+      </div>
+    </div>
+
+<% end %>
