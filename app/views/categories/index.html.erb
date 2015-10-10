@@ -1,0 +1,22 @@
+
+
+<div class="one" align="center">
+<% @category.each do |a| %>
+  <a href="#">
+    <div class="article">
+      <div class="head">
+        <div class="title">
+          <h2><%= a.name %></h2>
+          <h6><%= a.description %></h6>
+        </div>
+        <div class="count">
+          <span style="font-size: 35px">
+            <%= a.sub_categories.count%>
+          </span>
+          <p>Sub Categories</p>
+        </div>
+      </div>
+    </div>
+  </a>
+<% end %>
+</div>

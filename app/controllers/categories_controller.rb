@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @category = Category.all.order(rating: :desc)
+    @category = Category.all
   end
 
   def new

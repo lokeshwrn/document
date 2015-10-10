@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'sub_categories/index'
 
-  root 'categories#new'
+  root 'categories#index'
 
   get 'comments/create'
 
