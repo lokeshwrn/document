@@ -10,7 +10,6 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    debugger
     @category = Category.find(params[:id])
   end
 
