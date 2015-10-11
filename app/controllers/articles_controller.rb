@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
 
   def new
-    # @sub_category = SubCategory.find(params[:sub_category_id])
-    # @article = @sub_category.articles.new
-    @article = Article.new
+    @sub_category = SubCategory.find(params[:sub_category_id])
+    @article = @sub_category.articles.new
+    # @article = Article.new
   end
 
   def edit

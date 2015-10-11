@@ -21,9 +21,9 @@
       <%= f.label :content %>
       <%= f.text_area :content, class: 'form_content' %>
     </div>
-
+    <%= f.hidden_field :sub_category_id, :value => :params[sub_category_id] %>
     <div class="form_container_bottom" align="center">
-      <%= f.submit :submit, class: 'form_submit' %>
+      <%= f.submit :submit, class: 'form_submit'%>
     </div>
 
 <% end %>

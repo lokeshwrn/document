@@ -1,0 +1,62 @@
+<style>
+    menu > ul {
+        margin: 0px;
+        float: right;
+        /*padding: 10px 0px;*/
+    }
+    li{
+        font-size: 25px;
+    }
+    menu > ul > li {
+        display:inline;
+        padding:0px 10px;
+    }
+    menu > ul > li:hover a{
+        border-bottom: 2px solid cornflowerblue;
+        color: cornflowerblue;
+    }
+    .menu_anchor{
+        padding: 15px 0px;
+    }
+
+</style>
+
+<% role = "" %>
+<% control = "" %>
+<% if current_user.present? %>
+    <% role = "both" %>
+    <% control = "admin"  if current_user.role == "admin"  %>
+<% end %>
+
+<table style="width: 100%">
+  <tbody>
+  <tr>
+    <td style="width: 30%"><h1>My Site</h1></td>
+    <td style="width: 70%">
+      <menu>
+        <ul>
+          <% menu = Menu.where(access: ['all', role, control]).where(parent_id: 0) %>
+          <% if menu.present? %>
+              <% menu.order("sequence_number").each do |lists| %>
+                  <li>
+                    <%= link_to lists.title,{ :controller => lists.controller, :action => lists.action},{ :class => "menu_anchor"} %>
+                    <% id = lists.id %>
+                    <% submenu = Menu.where(parent_id: id )%>
+                    <% if submenu.present? %>
+                        <% submenu.order("sequence_number").each do |sublists| %>
+                            <ul>
+                              <li>
+                                <%= link_to sublists.title, :controller => sublists.controller, :action => sublists.action %>
+                              </li>
+                            </ul>
+                        <% end %>
+                    <% end %>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      </menu>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,5 +1,4 @@
 <style>
-
     #wrapper{
         width: 1124px;
         margin: 0px auto;
@@ -16,55 +15,12 @@
         background-position: center;
         background-size: cover;
     }
-    .article{
-        width: 33%;
-        box-sizing: border-box;
-        /*float: left;*/
-        display: inline-block;
-        padding: 15px;
-        /*margin: 10px;*/
-        border: 1px solid white;
-    }
-    .article:hover{
-        border:1px solid black;
-    }
-    .head{
-        width: 100%;
-        /*float: left;*/
-        text-align: left;
-    }
-    .title{
-        box-sizing: border-box;
-        width: 68%;
-        padding: 2%;
-        float: left;
-    }
-    .rating{
-        box-sizing: border-box;
-        width: 32%;
-        float: left;
-        color:green;
-        padding: 5% 2%;
-    }
-    .count{
-        box-sizing: border-box;
-        width: 32%;
-        float: left;
-        text-align: center;
-        padding: 4% 2%;
-    }
-    .content{
-        height: 68px;
-        overflow: hidden;
-        float: left;
-    }
     .fa-star{
         color:cornflowerblue;
     }
     .fa-star-o{
         color:black;
     }
-
     .form_container_right{
         width: 50%;
         float: left;
@@ -86,9 +42,11 @@
         margin-right:10%;
     }
     body {
+        background-color: #fafafa;
         /*font-family: 'Roboto', sans-serif;*/
         font-family: 'Roboto Condensed', sans-serif;
     }
-
-
 </style>
+<%= render 'layouts/general' %>
+<%= render 'layouts/responsive' %>
+<%= render 'layouts/data' %>
