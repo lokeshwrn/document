@@ -1,0 +1,21 @@
+<%= form_for @sub_category do |f| %>
+    <div class="form_container_right">
+      <div class="form_element">
+        <%= f.label :Name %>
+        <%= f.text_field :name, class: 'form_field' %>
+      </div>
+      <div class="form_element">
+        <%= f.label :Description %>
+        <%= f.text_field :description, class: 'form_field' %>
+      </div>
+      <div class="form_element">
+        <%= f.label :Publish %>
+        <%= check_box_tag 'sub_category[status]',@sub_category.id, @sub_category.status %>
+      </div>
+      <%= f.hidden_field :category_id, :value => params[:category_id] %>
+      <div class="form_element" align="center">
+        <%= f.submit :submit %>
+      </div>
+    </div>
+<% end %>
+  <%= render :partial =>'layouts/jquery_validation' %>
