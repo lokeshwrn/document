@@ -2,21 +2,22 @@ class SubCategoriesController < ApplicationController
 
   def index
     @category = Category.find(params[:category_id])
-    @sub_category = @category.sub_categories.all
+    @sub_category = @category.sub_categories.where(:status=>true)
+    @page_properties={:header => "Sub Category"}
   end
 
   def new
     @category = Category.find(params[:category_id])
     @sub_category = @category.sub_categories.new
+    @page_properties={:header => "New Sub Category"}
   end
 
   def edit
-    @category = Category.find(params[:category_id])
-    @sub_category = @category.sub_categories.find(params[:id])
+    @sub_category = SubCategories.find(params[:id])
+    @page_properties={:header => "Edit Sub Category"}
   end
 
   def create
-    debugger
     @category = Category.find(params[:sub_category][:category_id])
     @sub_category = @category.sub_categories.new(sub_category_params)
     if @sub_category.save
@@ -39,6 +40,7 @@ class SubCategoriesController < ApplicationController
   def show
     @category = Category.find(params[:category_id])
     @sub_category = @category.sub_categories.find(params[:id])
+    @page_properties={:header => "Sub Category"}
   end
 
   def destroy

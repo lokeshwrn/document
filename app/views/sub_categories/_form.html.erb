@@ -1,3 +1,6 @@
+<div class="heading">
+  <span><%= @page_properties[:header]%></span>
+</div>
 <%= form_for @sub_category do |f| %>
     <div class="form_container_right">
       <div class="form_element">
@@ -18,3 +21,4 @@
       </div>
     </div>
 <% end %>
+  <%= render :partial =>'layouts/jquery_validation' %>

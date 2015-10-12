@@ -1,5 +1,5 @@
 <div class="heading">
-  <span>Sub Category</span>
+  <span><%= @page_properties[:header]%></span>
   <a href="<%= 'sub_categories/new?category_id=' + params[:category_id].to_s %>" class="button">
     <span>New Sub Category</span>
   </a>

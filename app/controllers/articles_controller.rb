@@ -3,22 +3,25 @@ class ArticlesController < ApplicationController
   def new
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.new
-    # @article = Article.new
+    @page_properties={:header => "New Article"}
   end
 
   def edit
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
+    @page_properties={:header => "Edit Article"}
   end
 
   def index
     @sub_category = SubCategory.find(params[:sub_category_id])
-    @articles = @sub_category.articles.all.order(rating: :desc)
+    @articles = @sub_category.articles.where(:status=>true).order(rating: :desc)
+    @page_properties={:header => "Article"}
   end
 
   def show
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
+    @page_properties={:header => "Article"}
   end
 
   def create

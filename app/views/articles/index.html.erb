@@ -1,10 +1,11 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
-  <div class="button">
-    <span>
-        <%= link_to("New Article", :controller => 'articles', :action => 'new', :sub_category_id => 1)%>
-    </span>
-  </div>
+  <a href="<%= 'articles/new?sub_category_id=' + params[:sub_category_id].to_s %>" class="button">
+    <span>New Article</span>
+  </a>
+  <a href="<%= 'sub_categories/' + params[:sub_category_id].to_s + '/edits'%>" class="button">
+    <span>Edit Category</span>
+  </a>
 </div>
 
 <div class="index" align="center">

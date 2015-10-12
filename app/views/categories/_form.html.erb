@@ -21,30 +21,4 @@
     </div>
 
 <% end %>
-
-<style>
-    .error_label{
-        color:orangered;
-    }
-    .error_field{
-        border:1px solid red;
-    }
-</style>
-<script>
-    $($('div').find("input[type=submit]")).click(function(e){
-        $( "input" ).each(function( ) {
-            $('div').find("input[type=text]").each(function(){
-                var value=$(this).val();
-                if (!value){
-                    e.preventDefault();
-                    $(this).addClass('error_field');
-                    $(this).prev().addClass('error_label');
-                }
-                else{
-                    $(this).removeClass('error_field');
-                    $(this).prev().removeClass('error_label');
-                }
-            });
-        });
-    });
-</script>
+  <%= render :partial =>'layouts/jquery_validation' %>
