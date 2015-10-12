@@ -1,0 +1,33 @@
+<div class="heading">
+  <span>Sub Category</span>
+  <a href="<%= 'sub_categories/new?category_id=' + params[:category_id].to_s %>" class="button">
+    <span>New Sub Category</span>
+  </a>
+  <a href="<%= 'categories/' + params[:category_id].to_s + '/edit' %>" class="button">
+    <span>Edit Category</span>
+  </a>
+</div>
+
+<div class="index" align="center">
+<% @sub_category.each do |a| %>
+  <a href="<%= 'articles?sub_category_id=' + a.id.to_s %>">
+    <div class="article">
+      <div class="head">
+        <div class="title">
+          <h3><%= a.name %></h3>
+          <h6><%= a.description %></h6>
+        </div>
+        <div class="count">
+          <span>
+            <%= a.articles.count%>
+          </span>
+          <p><%= a.articles.count!=1 ? "Articles".pluralize : "Articles".singularize %></p>
+        </div>
+      </div>
+    </div>
+  </a>
+<% end %>
+</div>
+
+
+<%#= link_to("New Sub Category", :controller => 'sub_categories', :action => 'new', :category_id => @sub_category.first.id)%>

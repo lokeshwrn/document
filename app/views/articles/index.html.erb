@@ -1,0 +1,41 @@
+<div class="heading">
+  <span>Articles</span>
+  <div class="button">
+    <span>
+        <%= link_to("New Article", :controller => 'articles', :action => 'new', :sub_category_id => 1)%>
+    </span>
+  </div>
+</div>
+
+<div class="index" align="center">
+<% @articles.each do |a| %>
+    <a href="#">
+    <div class="article">
+      <div class="head">
+        <div class="title">
+        <h3>
+          <%#= link_to "Hloooo", :controller => "articles", :action => "edit", params["id"] => 1%>
+          <%#= link_to "Hloooo", edit_article_path, params[:id] => 1 %>
+          <%= a.title.upcase %>
+        </h3>
+          <h6 class="hr_line">By <%= "hello".upcase%> | <%= "welcom"%> Comments</h6>
+        </div>
+
+        <div class="rating" align="center">
+          <%(1..(a.rating)).each do |q|%>
+              <span><i class="fa fa-star"></i></span>
+          <%end%>
+          <%(1..(5-a.rating)).each do |q|%>
+              <span><i class="fa fa-star-o"></i></span>
+          <%end%>
+        </div>
+
+      </div>
+      <div class="content">
+        <p><%= a.description%></p>
+      </div>
+    </div>
+    </a>
+
+<% end %>
+</div>
