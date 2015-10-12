@@ -1,5 +1,5 @@
 <div class="heading">
-  <span>Articles</span>
+  <span><%= @page_properties[:header]%></span>
   <div class="button">
     <span>
         <%= link_to("New Article", :controller => 'articles', :action => 'new', :sub_category_id => 1)%>

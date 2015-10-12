@@ -10,7 +10,7 @@
       </div>
       <div class="form_element">
         <%= f.label :Publish %>
-        <%= check_box_tag 'category[status]' %>
+        <%= check_box_tag 'sub_category[status]',@sub_category.id, @sub_category.status %>
       </div>
       <%= f.hidden_field :category_id, :value => params[:category_id] %>
       <div class="form_element" align="center">

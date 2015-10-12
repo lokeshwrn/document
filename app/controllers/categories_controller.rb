@@ -1,15 +1,17 @@
 class CategoriesController < ApplicationController
 
   def index
-
     @category = Category.all
+    @page_properties={:header => "Category"}
   end
 
   def new
+    @page_properties={:header => "New Category"}
     @category = Category.new
   end
 
   def edit
+    @page_properties={:header => "Edit Category"}
     @category = Category.find(params[:id])
   end
 
@@ -32,6 +34,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @page_properties={:header => "Category"}
     @category = Category.find(params[:id])
   end
 
