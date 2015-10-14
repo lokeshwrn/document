@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
 
   def index
     @sub_category = SubCategory.find(params[:sub_category_id])
-    @articles = @sub_category.articles.where(:status=>true).order(rating: :desc)
+    @articles = @sub_category.articles.all.order(rating: :desc)
     @page_properties={:header => "Article"}
   end
 
@@ -25,8 +25,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.new(article_params)
+    @article = Article.new(article_params)
     if @article.save
       redirect_to root_url
     else
@@ -52,7 +51,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating)
+    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating, :sub_category_id)
   end
 
 end

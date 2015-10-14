@@ -7,7 +7,7 @@
     }
 </style>
 <script>
-    $($('div').find("input[type=submit]")).click(function(e){
+    /*$($('div').find("input[type=submit]")).click(function(e){
         $( "input" ).each(function( ) {
             $('div').find("input[type=text]").each(function(){
                 var value=$(this).val();
@@ -22,5 +22,41 @@
                 }
             });
         });
+    });*/
+
+    $($('div').find("input[type=submit]")).click(function(e){
+
+        var value=0;
+        var array = JSON.parse('<%= raw @mandatory_field %>');
+        var field = JSON.parse('<%= raw @attach_field %>');
+        var a=[];
+        $.each(array, function( index, value ) {
+            a.push(field[0] + value );
+        });
+        $('div').find("label").each(function(){
+            var asd = $(this).next().attr('id');
+            var flag = ($.inArray(asd, a));
+            flag+=1;
+            if (flag)
+            {
+                var chec = $('#'+asd).val();
+                if ( chec=='' || chec == null)
+                {
+                    $('#'+asd).addClass('error_field');
+                    $('#'+asd).prev().addClass('error_label');
+                    value=1;
+                }
+                else{
+                    $('#'+asd).removeClass('error_field');
+                    $('#'+asd).prev().removeClass('error_label');
+                    console.log("*******");
+                }
+            }
+        });
+        console.log(value);
+        if (value){
+            e.preventDefault();
+        }
     });
+
 </script>

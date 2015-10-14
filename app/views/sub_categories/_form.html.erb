@@ -21,4 +21,6 @@
       </div>
     </div>
 <% end %>
-  <%= render :partial =>'layouts/jquery_validation' %>
+<% @mandatory_field = ['name','description'].to_json %>
+<% @attach_field = ['sub_category_'].to_json%>
+<%= render :partial => 'layouts/jquery_validation' %>
