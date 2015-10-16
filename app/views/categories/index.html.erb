@@ -1,11 +1,10 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
-  <div class="button">
-    <span>
-          <%= link_to("New Category", :controller => 'categories', :action => 'new')%>
-    </span>
-  </div>
+    <a href="<%= '/categories/new' %>" class="button">
+      <span>New Category</span>
+    </a>
 </div>
+
 <%if @category.present?%>
     <div class="index" align="center">
     <% @category.each do |a| %>

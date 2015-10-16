@@ -8,6 +8,9 @@
   </a>
 </div>
 
+<% @breadcrumb ={:Home => "/", :Sub_Category => "#"}%>
+<%= render :partial => 'layouts/bread_crumb'%>
+
 <%if @sub_category.present?%>
 <div class="index" align="center">
 <% @sub_category.each do |a| %>
