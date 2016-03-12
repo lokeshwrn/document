@@ -8,4 +8,8 @@ class Article < ActiveRecord::Base
   validates :description, presence: true
   validates :content, presence: true
 
+  scope :by_active, -> {where('status = ?', true)}
+  scope :latest_by_updated, -> { order("updated_at desc") }
+  scope :top_rated, -> { order("rating desc") }
+
 end

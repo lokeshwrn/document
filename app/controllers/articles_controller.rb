@@ -26,7 +26,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    debugger
     if @article.save
       redirect_to articles_path(@article.sub_category.id)
     else

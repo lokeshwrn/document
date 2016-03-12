@@ -1,3 +1,10 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
 </div>
+
+<% @breadcrumb ={:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories", :Articles => "/sub-categories/#{@sub_category.id}/articles", @article.title => "#"} %>
+<%= render :partial => 'layouts/bread_crumb'%>
+
+<div class="description">
+	<%= @article.description %>
+</div>

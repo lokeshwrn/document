@@ -12,13 +12,38 @@
 </head>
 <body>
 <!--<div id="bgimg"></div>-->
-  <div id="header">
-    <%#= render 'layouts/menu' %>
-      <div id="wrapper">
+<div id="header">
+  <%#= render 'layouts/menu' %>
 
-          <%= yield %>
+  <div id="wrapper">
 
-       </div>
+    <div class="top-menu">
+      <ul>
+        <% @categories.each do |cat| %>
+          <li>
+            <a href="<%= "/categories/#{cat.id.to_s}/sub-categories" %>">
+              <%= cat.name %>
+	            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <%= yield %>
+
   </div>
+</div>
 </body>
+<style>
+	.top-menu ul{
+		list-style: none;
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+	.top-menu ul li{
+		display: table-cell;
+		text-align: center;
+	}
+</style>
 </html>

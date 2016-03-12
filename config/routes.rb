@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'sub-categories/:sub_category_id/articles/:id' => 'articles#show', :as => :show_article
 
   get 'home/dashboard'
+  get ':id' => 'home#tiny_url', :article_id => /(\d+)/
 
   # get 'comments/create'
   #
