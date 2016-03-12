@@ -22,7 +22,8 @@
     </div>
     <div class="form_container_left">
       <%= f.label :content %>
-      <%= f.text_area :content, class: 'form_content' %>
+      <%#= f.text_area :content, class: 'form_content' %>
+      <%= f.text_area :content, class: "tinymce form_content" %>
     </div>
     <%= f.hidden_field :sub_category_id, :value => params[:sub_category_id] %>
     <div class="form_container_bottom" align="center">
@@ -32,3 +33,6 @@
 <% @mandatory_field = ['title','description','content'].to_json %>
 <% @attach_field = ['article_'].to_json%>
 <%= render :partial => 'layouts/jquery_validation' %>
+
+
+<%= tinymce %>
