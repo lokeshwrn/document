@@ -19,7 +19,7 @@
       </div>
       <div class="form_element">
         <%= f.label :Publish %>
-        <%= check_box_tag 'category[status]', @category.status, @category.status %>
+        <%= check_box_tag 'category[status]', true, @category.status %>
       </div>
       <div class="form_element" align="center">
         <%= f.submit :submit %>

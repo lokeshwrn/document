@@ -37,10 +37,6 @@ class CategoriesController < ApplicationController
 
   end
 
-  def dashboard
-
-  end
-
   private
 
   def category_params

@@ -1,0 +1,102 @@
+<div class="heading">
+  <span><%= @page_properties[:header]%></span>
+</div>
+
+<%if @category.present?%>
+  <div class="index" align="center">
+    <% @category.each do |a| %>
+      <a href="<%= "/categories/#{a.id.to_s}/sub-categories" %>">
+        <div class="article">
+          <div class="head">
+            <div class="title">
+              <h3><%= a.name %></h3>
+              <h6><%= a.description %></h6>
+            </div>
+            <div class="count">
+              <span>
+                <%= a.sub_categories.count%>
+              </span>
+              <p><%= a.sub_categories.count!=1 ? "Sub Category".pluralize : "Sub Category".singularize %></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<%else%>
+  <div class="index" align="center">
+    <h4>No Data to Display</h4>
+  </div>
+<%end%>
+
+
+
+<%if @sub_category.present?%>
+  <div class="index" align="center">
+    <% @sub_category.each do |a| %>
+      <a href="<%= "/sub-categories/#{a.id.to_s}/articles" %>">
+        <div class="article">
+          <div class="head">
+            <div class="title">
+              <h3><%= a.name %></h3>
+              <h6><%= a.description %></h6>
+            </div>
+            <div class="count">
+          <span>
+            <%= a.articles.count%>
+          </span>
+              <p><%= a.articles.count!=1 ? "Articles".pluralize : "Articles".singularize %></p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+<%else%>
+  <div class="index" align="center">
+    <h4>No Data to Display</h4>
+  </div>
+<%end%>
+
+
+
+<%if @articles.present? %>
+  <div class="index" align="center">
+    <% @articles.each do |a| %>
+      <a href="#">
+        <div class="article">
+          <div class="head">
+            <div class="title">
+              <h3>
+                <%#= link_to "Hloooo", :controller => "articles", :action => "edit", params["id"] => 1%>
+                <%#= link_to "Hloooo", edit_article_path, params[:id] => 1 %>
+                <%= a.title.upcase %>
+              </h3>
+              <h6 class="hr_line">By <%= "hello".upcase%> | <%= "welcom"%> Comments</h6>
+            </div>
+
+            <div class="rating" align="center">
+              <%(1..(a.rating)).each do |q|%>
+                <span><i class="fa fa-star"></i></span>
+              <%end%>
+              <%(1..(5-a.rating)).each do |q|%>
+                <span><i class="fa fa-star-o"></i></span>
+              <%end%>
+            </div>
+
+          </div>
+          <div class="content">
+            <p><%=raw a.content%></p>
+          </div>
+        </div>
+      </a>
+
+    <% end %>
+  </div>
+<%else%>
+  <div class="index" align="center">
+    <h4>No Data to Display</h4>
+  </div>
+<%end%>
+
+

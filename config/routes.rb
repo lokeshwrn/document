@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'categories#dashboard'
+  root 'home#dashboard'
 
   get 'categories' => 'categories#index', :as => :categories
   get 'categories/:id/edit' => 'categories#edit', :as => :edit_category
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post 'sub-categories/:sub_category_id/articles/create' => 'articles#create', :as => :create_article
   post 'sub-categories/:sub_category_id/articles/update' => 'articles#update', :as => :update_article
   get 'sub-categories/:sub_category_id/articles/:id' => 'articles#show', :as => :show_article
+
+  get 'home/dashboard'
 
   # get 'comments/create'
   #
