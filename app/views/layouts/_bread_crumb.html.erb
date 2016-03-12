@@ -1,0 +1,30 @@
+<div class="breadcrumbheader">
+  <ul class="breadcrumb">
+     <% @breadcrumb.each do |key,val| %>
+        <% if val!="#" %>
+            <li><a href="<%= val %>"><%= key.to_s.gsub('_',' ') %></a> ></li>
+        <% else %>
+            <li><%= key.to_s.gsub('_',' ') %></li>
+        <% end %>
+     <% end %>
+  </ul>
+</div>
+
+<style>
+    .breadcrumbheader{
+        width: 100%;
+        float: left;
+        margin: 10px 0px;
+        font-size: 15px;
+    }
+    .breadcrumb li :hover{
+        color:#2071ee;
+    }
+    .breadcrumb li, .breadcrumb a{
+        list-style: none;
+        display: block;
+        float:left;
+        font-size: 12px;
+        padding: 0px 6px;
+    }
+</style>
