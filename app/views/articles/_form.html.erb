@@ -1,7 +1,12 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
 </div>
-<%= form_for @article do |f| %>
+
+<% @breadcrumb = {:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories", :Articles => "/sub-categories/#{@sub_category.id}/articles"} %>
+<% @sub_category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[:Edit] = "#") %>
+<%= render :partial => 'layouts/bread_crumb' %>
+
+<%= form_for @article, method: :post, :url => @article.new_record? ? :create_article : :update_article do |f| %>
     <div class="form_container_right">
       <div class="form_element">
         <%= f.label :title %>

@@ -1,7 +1,12 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
 </div>
-<%= form_for @sub_category do |f| %>
+
+<% @breadcrumb = {:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories"} %>
+<% @sub_category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[:Edit] = "#") %>
+<%= render :partial => 'layouts/bread_crumb' %>
+
+<%= form_for @sub_category, method: :post, :url => @sub_category.new_record? ? :create_sub_category : :update_sub_category do |f| %>
     <div class="form_container_right">
       <div class="form_element">
         <%= f.label :Name %>
@@ -13,14 +18,16 @@
       </div>
       <div class="form_element">
         <%= f.label :Publish %>
-        <%= check_box_tag 'sub_category[status]',@sub_category.id, @sub_category.status %>
+        <%= check_box_tag 'sub_category[status]', @sub_category.status, @sub_category.status %>
       </div>
-      <%= f.hidden_field :category_id, :value => params[:category_id] %>
+      <%= hidden_field_tag :category_id, params[:category_id] %>
+      <%= hidden_field_tag :id, params[:id] %>
       <div class="form_element" align="center">
         <%= f.submit :submit %>
       </div>
     </div>
 <% end %>
+
 <% @mandatory_field = ['name','description'].to_json %>
 <% @attach_field = ['sub_category_'].to_json%>
 <%= render :partial => 'layouts/jquery_validation' %>

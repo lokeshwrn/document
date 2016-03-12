@@ -1,12 +1,33 @@
 Rails.application.routes.draw do
 
-  root 'categories#index'
+  root 'categories#dashboard'
 
-  get 'comments/create'
+  get 'categories' => 'categories#index', :as => :categories
+  get 'categories/:id/edit' => 'categories#edit', :as => :edit_category
+  get 'categories/new' => 'categories#new', :as => :new_category
+  post 'categories/create' => 'categories#create', :as => :create_category
+  post 'categories/update' => 'categories#update', :as => :update_category
 
-  get 'sessions/create'
+  get 'categories/:category_id/sub-categories' => 'sub_categories#index', :as => :sub_categories
+  get 'categories/:category_id/sub-categories/:id/edit' => 'sub_categories#edit', :as => :edit_sub_category
+  get 'categories/:category_id/sub-categories/new' => 'sub_categories#new', :as => :new_sub_category
+  post 'categories/:category_id/sub-categories/create' => 'sub_categories#create', :as => :create_sub_category
+  post 'categories/:category_id/sub-categories/update' => 'sub_categories#update', :as => :update_sub_category
 
-  resources :articles, :categories, :sub_categories
+  get 'sub-categories/:sub_category_id/articles' => 'articles#index', :as => :articles
+  get 'sub-categories/:sub_category_id/articles/:id/edit' => 'articles#edit', :as => :edit_article
+  get 'sub-categories/:sub_category_id/articles/new' => 'articles#new', :as => :new_article
+  post 'sub-categories/:sub_category_id/articles/create' => 'articles#create', :as => :create_article
+  post 'sub-categories/:sub_category_id/articles/update' => 'articles#update', :as => :update_article
+  get 'sub-categories/:sub_category_id/articles/:id' => 'articles#show', :as => :show_article
+
+  # get 'comments/create'
+  #
+  # get 'sessions/create'
+  #
+  # resources :articles, :categories, :sub_categories
+
+
 
   resources :users do
     get 'index'

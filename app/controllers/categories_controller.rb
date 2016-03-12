@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
 
   def index
-    @category = Category.where(:status => true)
     @page_properties={:header => "Category"}
+    @category = Category.where(:status => true)
   end
 
   def new
@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to root_url
+      redirect_to categories_path
     else
       render 'new'
     end
@@ -27,18 +27,17 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to root_url
+      redirect_to categories_path
     else
       render 'edit'
     end
   end
 
-  def show
-    @page_properties={:header => "Category"}
-    @category = Category.find(params[:id])
+  def destroy
+
   end
 
-  def destroy
+  def dashboard
 
   end
 

@@ -1,12 +1,15 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
-  <a href="<%= 'articles/new?sub_category_id=' + params[:sub_category_id].to_s %>" class="button">
+  <a href="<%= "/sub-categories/#{@sub_category.id}/articles/new" %>" class="button">
     <span>New Article</span>
   </a>
-  <a href="<%= 'sub_categories/' + params[:sub_category_id].to_s + '/edits'%>" class="button">
+  <a href="<%= "/categories/#{@sub_category.category.id}/sub-categories/#{@sub_category.id}/edit" %>" class="button">
     <span>Edit Category</span>
   </a>
 </div>
+
+<% @breadcrumb ={:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories", :Articles => "#"} %>
+<%= render :partial => 'layouts/bread_crumb'%>
 
 <div class="index" align="center">
 <% @articles.each do |a| %>

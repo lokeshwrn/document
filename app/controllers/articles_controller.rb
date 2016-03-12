@@ -1,33 +1,34 @@
 class ArticlesController < ApplicationController
 
   def new
+    @page_properties={:header => "New Article"}
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.new
-    @page_properties={:header => "New Article"}
   end
 
   def edit
+    @page_properties={:header => "Edit Article"}
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
-    @page_properties={:header => "Edit Article"}
   end
 
   def index
+    @page_properties={:header => "Article"}
     @sub_category = SubCategory.find(params[:sub_category_id])
     @articles = @sub_category.articles.all.order(rating: :desc)
-    @page_properties={:header => "Article"}
   end
 
   def show
+    @page_properties={:header => "Article"}
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
-    @page_properties={:header => "Article"}
   end
 
   def create
     @article = Article.new(article_params)
+    debugger
     if @article.save
-      redirect_to root_url
+      redirect_to articles_path(@article.sub_category.id)
     else
       render 'new'
     end
@@ -37,7 +38,7 @@ class ArticlesController < ApplicationController
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to articles_path(@article.sub_category.id)
     else
       render 'edit'
     end
@@ -45,7 +46,6 @@ class ArticlesController < ApplicationController
 
   def destroy
     @sub_category = SubCategory.find(params[:sub_category_id])
-
   end
 
   private

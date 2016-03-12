@@ -5,10 +5,13 @@
     </a>
 </div>
 
+<% @breadcrumb ={:Home => "/", :Category => "#"}%>
+<%= render :partial => 'layouts/bread_crumb' %>
+
 <%if @category.present?%>
     <div class="index" align="center">
     <% @category.each do |a| %>
-      <a href="<%= 'sub_categories?category_id=' + a.id.to_s %>">
+      <a href="<%= "/categories/#{a.id.to_s}/sub-categories" %>">
         <div class="article">
           <div class="head">
             <div class="title">
