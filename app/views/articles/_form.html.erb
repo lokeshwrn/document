@@ -39,5 +39,4 @@
 <% @attach_field = ['article_'].to_json%>
 <%= render :partial => 'layouts/jquery_validation' %>
 
-
-<%= tinymce %>
+<%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
