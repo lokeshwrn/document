@@ -2,9 +2,20 @@ class HomeController < ApplicationController
 
   def dashboard
     @page_properties={:header => "Dashboard"}
-    @category = Category.by_active.top_by_count.first(3)
-    @sub_category = SubCategory.by_active.top_by_count.first(3)
-    @articles = Article.by_active.top_rated.first(3)
+    @sub_category = SubCategory.by_active.top_by_count.first(6)
+    @articles = Article.by_active.top_rated.first(6)
+  end
+
+  def get_favs
+    sleep(2)
+    a={"#categories " => Category.get_favourites, "#sub-categories " => SubCategory.get_favourites, "#articles " => Article.get_favourites, "#tags" => Tag.get_favourites}.to_json
+    render json: a, :layout => false
+  end
+
+  def get_toppers
+    sleep(2)
+    a={"#categories " => Category.get_toppers, "#sub-categories " => SubCategory.get_toppers, "#articles " => Article.get_toppers, "#tags" => Tag.get_toppers}.to_json
+    render json: a, :layout => false
   end
 
   def tiny_url

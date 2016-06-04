@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001143856) do
+ActiveRecord::Schema.define(version: 20160604145449) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20151001143856) do
     t.string   "github_url"
     t.integer  "rating",          default: 0
     t.integer  "sub_category_id"
+    t.boolean  "favourite"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
   end
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 20151001143856) do
     t.string   "name"
     t.string   "description"
     t.boolean  "status",      default: false
+    t.boolean  "favourite"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151001143856) do
     t.integer  "user_id"
     t.integer  "article_id"
     t.string   "content"
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,20 +66,35 @@ ActiveRecord::Schema.define(version: 20151001143856) do
     t.string   "description"
     t.integer  "category_id"
     t.boolean  "status",      default: false
+    t.boolean  "favourite"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.string   "alias_name"
+    t.string   "status",     default: "f"
+    t.boolean  "favourite"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "user_name"
     t.string   "email_id"
     t.string   "password"
-    t.string   "secret"
-    t.string   "role",             default: "users"
-    t.boolean  "status",           default: false
-    t.integer  "user_property_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.integer  "phone"
+    t.boolean  "status"
+    t.datetime "last_login"
+    t.string   "password_secret"
+    t.string   "unicode_data"
+    t.string   "role"
+    t.string   "reset_code"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

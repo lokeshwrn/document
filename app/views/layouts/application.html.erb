@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Document</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @page_properties[:page_title] %></title>
+
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="google-site-verification" content="Bi9RrRAR7drDCVv1gcXbP1Ge0CrSPilZfJn7lpjWg88" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />
+
   <%= csrf_meta_tags %>
+
   <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <%= render 'layouts/css' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 <!--<div id="bgimg"></div>-->
@@ -20,11 +28,11 @@
     <div class="top-menu">
       <ul>
         <% @categories.each do |cat| %>
-          <li>
-            <a href="<%= "/categories/#{cat.id.to_s}/sub-categories" %>">
-              <%= cat.name %>
-	            </a>
-          </li>
+            <li>
+              <a href="<%= "/categories/#{cat.id.to_s}/sub-categories" %>">
+                <%= cat.name %>
+              </a>
+            </li>
         <% end %>
       </ul>
     </div>
@@ -34,16 +42,5 @@
   </div>
 </div>
 </body>
-<style>
-	.top-menu ul{
-		list-style: none;
-		display: table;
-		table-layout: fixed;
-		width: 100%;
-	}
-	.top-menu ul li{
-		display: table-cell;
-		text-align: center;
-	}
-</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 </html>

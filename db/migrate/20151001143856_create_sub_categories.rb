@@ -5,6 +5,7 @@ class CreateSubCategories < ActiveRecord::Migration
       t.string :description
       t.integer :category_id
       t.boolean :status, :default => false
+      t.boolean :favourite
 
       t.timestamps null: false
     end

@@ -10,6 +10,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :github_url, :default => nil
       t.integer :rating, :default => 0
       t.integer :sub_category_id
+      t.boolean :favourite
 
       t.timestamps null: false
     end

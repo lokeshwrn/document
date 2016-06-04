@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'home#dashboard'
 
+  get '/get_favourites' => 'home#get_favs'
+  get '/get_toppers' => 'home#get_toppers'
+
   get 'categories' => 'categories#index', :as => :categories
   get 'categories/:id/edit' => 'categories#edit', :as => :edit_category
   get 'categories/new' => 'categories#new', :as => :new_category
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
 
   get 'home/dashboard'
   get ':id' => 'home#tiny_url', :article_id => /(\d+)/
+
 
   # get 'comments/create'
   #

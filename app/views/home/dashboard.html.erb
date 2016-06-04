@@ -2,17 +2,20 @@
   <span><%= @page_properties[:header] %></span>
 </div>
 
-<div class="top-categories">
-  <h3>Top Categories</h3>
-  <%= render :partial => 'categories/categories_block' %>
+<div class="toppers">
+  <h3>Show Toppers</h3>
+  <%#= render :partial => 'categories/categories_block' %>
+  <%= render :partial => 'home/show_topers' %>
 </div>
 
-<div class="top-sub-categories">
-  <h3>Top Sub Categories</h3>
-  <%= render :partial => 'sub_categories/sub_categories_block' %>
+<div class="favourites">
+  <h3>My Favourites</h3>
+  <%#= render :partial => 'sub_categories/sub_categories_block' %>
+  <%= render :partial => 'home/favourite' %>
 </div>
 
-<div class="top-articles">
-  <h3>Top Articles</h3>
-  <%= render :partial => 'articles/articles_block' %>
+<div class="search">
+  <h3>Search</h3>
+  <%#= render :partial => 'articles/articles_block' %>
+  <%= render :partial => 'home/search' %>
 </div>

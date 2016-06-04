@@ -3,9 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :top_menu
+  before_filter :default_properties
 
-  def top_menu
+  def default_properties
+    @page_properties={:page_title => "Document"}
     @categories = Category.by_active
   end
 
