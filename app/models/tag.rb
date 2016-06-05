@@ -15,7 +15,7 @@ class Tag < ActiveRecord::Base
       k=ALPHA_NUMERIC_MAPPING[(k+1).to_s]
       hash[k]={}
       hash[k]["title"]=y.name
-      hash[k]["url"]="/categories/#{y.id.to_s}/sub-categories"
+      hash[k]["url"]="hello"
       hash[k]["desc"]=y.description
       hash[k]["count"]=y.articles.count
     end

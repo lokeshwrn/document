@@ -21,9 +21,9 @@
 
 <% role = "" %>
 <% control = "" %>
-<% if current_user.present? %>
+<% if @current_user.present? %>
     <% role = "both" %>
-    <% control = "admin"  if current_user.role == "admin"  %>
+    <% control = "admin"  if @current_user.role == "admin"  %>
 <% end %>
 
 <table style="width: 100%">

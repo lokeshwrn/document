@@ -59,8 +59,7 @@ $(document).ready(function(){
     $('.tab-content .tab-pane:first-child').addClass('active');
     $('#search').find('.tab-content').removeClass('loader');
 
-    get_ajax_call("toppers");
-    get_ajax_call("favourites");
+
 
     // tab structure toggle
     $('.tab-header li').on("click", function(){

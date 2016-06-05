@@ -1,11 +1,9 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
-  <a href="<%= "/categories/#{params[:category_id].to_s}/sub-categories/new" %>" class="button">
-    <span>New Sub Category</span>
-  </a>
-  <a href="<%= "/categories/#{params[:category_id].to_s}/edit" %>" class="button">
-    <span>Edit Category</span>
-  </a>
+
+  <%= custom_button_1("New Sub Category", new_sub_category_path(params[:category_id])) %>
+  <%= custom_button_1("Edit Category", edit_category_path(params[:category_id])) %>
+
 </div>
 
 <% @breadcrumb ={:Home => "/", :Category => "/categories", :Sub_Category => "#"}%>

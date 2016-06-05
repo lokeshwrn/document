@@ -3,7 +3,7 @@
 </div>
 
 <div class="toppers">
-  <h3>Show Toppers</h3>
+  <h3>Top Scorers</h3>
   <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="toppers">
     <%= render :partial => 'home/tab_listing' %>
   </div>
@@ -27,3 +27,10 @@
     <%= render :partial => 'home/tab_listing' %>
   </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        get_ajax_call("toppers");
+        get_ajax_call("favourites");
+    });
+</script>

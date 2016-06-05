@@ -6,4 +6,12 @@ ALPHA_NUMERIC_MAPPING={
     "5" => "#five",
     "6" => "#six"
 }
+
 TOP_DIVS=["one", "two", "three", "four", "five", "six"]
+
+ELEMENT_MAPPING={
+    "categories"=>"Sub Categories",
+    "sub-categories" => "Articles",
+    "tags" => "Articles",
+    "articles" => "Stars"
+}

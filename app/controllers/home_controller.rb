@@ -1,19 +1,17 @@
 class HomeController < ApplicationController
 
   def dashboard
-    @page_properties={:header => "Dashboard"}
-    @sub_category = SubCategory.by_active.top_by_count.first(6)
-    @articles = Article.by_active.top_rated.first(6)
+    @page_properties.merge({:header => "Dashboard"})
   end
 
   def get_favs
-    sleep(5)
+    sleep(3)
     a={"#categories " => Category.get_favourites, "#sub-categories " => SubCategory.get_favourites, "#tags" => Tag.get_favourites, "#articles " => Article.get_favourites}.to_json
     render json: a, :layout => false
   end
 
   def get_toppers
-    sleep(5)
+    sleep(3)
     a={"#categories " => Category.get_toppers, "#sub-categories " => SubCategory.get_toppers, "#tags" => Tag.get_toppers, "#articles " => Article.get_toppers}.to_json
     render json: a, :layout => false
   end
