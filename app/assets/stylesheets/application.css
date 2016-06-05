@@ -258,5 +258,5 @@ h6.hr_line::after{
 
 .my-tab .device-content{display:none;}
 
-.my-tab img { position: absolute; right: 50%; top: 100px; }
+.my-tab img { position: absolute; right: 48%; top: 150px; display:none; }
 .my-tab .loader{opacity:0.6;}

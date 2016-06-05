@@ -8,14 +8,6 @@ class Tag < ActiveRecord::Base
   scope :by_favs, -> {where('favourite = ?', true)}
   scope :latest_by_updated, -> { order("updated_at desc") }
 
-  def self.get_favourites
-    fetch_values(Tag.by_favs.first(6))
-  end
-
-  def self.get_toppers
-    fetch_values(Tag.by_favs.first(6))
-  end
-
   def self.fetch_values(tags)
     hash={}
     tags.each_with_index do |value, index|
@@ -29,4 +21,22 @@ class Tag < ActiveRecord::Base
     end
     hash
   end
+
+  def self.top_by_count
+    self.all.sort{|x,y| y.articles.count <=> x.articles.count}
+  end
+
+  def self.get_favourites
+    fetch_values(Tag.by_favs.first(6))
+  end
+
+  def self.get_toppers
+    fetch_values(Tag.top_by_count.first(6))
+  end
+
+  def self.get_search(value)
+    tag=Tag.where("name LIKE ?", "%#{value}%")
+    fetch_values(tag)
+  end
+
 end

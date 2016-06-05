@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/get_favourites' => 'home#get_favs'
   get '/get_toppers' => 'home#get_toppers'
+  post '/get_search' => 'home#get_search'
 
   get 'categories' => 'categories#index', :as => :categories
   get 'categories/:id/edit' => 'categories#edit', :as => :edit_category

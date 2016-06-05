@@ -4,18 +4,26 @@
 
 <div class="toppers">
   <h3>Show Toppers</h3>
-  <%#= render :partial => 'categories/categories_block' %>
-  <%= render :partial => 'home/show_topers' %>
+  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="toppers">
+    <%= render :partial => 'home/tab_listing' %>
+  </div>
 </div>
 
 <div class="favourites">
   <h3>My Favourites</h3>
-  <%#= render :partial => 'sub_categories/sub_categories_block' %>
-  <%= render :partial => 'home/favourite' %>
+  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="favourites">
+    <%= render :partial => 'home/tab_listing' %>
+  </div>
 </div>
 
 <div class="search">
   <h3>Search</h3>
-  <%#= render :partial => 'articles/articles_block' %>
-  <%= render :partial => 'home/search' %>
+
+  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="search">
+    <div class="search-form">
+      <input type="text">
+      <button type="submit">Search</button>
+    </div>
+    <%= render :partial => 'home/tab_listing' %>
+  </div>
 </div>

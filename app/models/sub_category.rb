@@ -10,18 +10,6 @@ class SubCategory < ActiveRecord::Base
   scope :by_favs, -> {where('favourite = ?', true)}
   scope :latest_by_updated, -> { order("updated_at desc") }
 
-  def self.top_by_count
-    self.all.sort{|x,y| y.articles.count <=> x.articles.count}
-  end
-
-  def self.get_favourites
-    fetch_values(SubCategory.by_favs.first(6))
-  end
-
-  def self.get_toppers
-    fetch_values(SubCategory.top_by_count.first(6))
-  end
-
   def self.fetch_values(sub_cat)
     hash={}
     sub_cat.each_with_index do |value, index|
@@ -35,4 +23,22 @@ class SubCategory < ActiveRecord::Base
     end
     hash
   end
+
+  def self.top_by_count
+    self.all.sort{|x,y| y.articles.count <=> x.articles.count}
+  end
+
+  def self.get_favourites
+    fetch_values(SubCategory.by_favs.first(6))
+  end
+
+  def self.get_toppers
+    fetch_values(SubCategory.top_by_count.first(6))
+  end
+
+  def self.get_search(value)
+    sub_category=SubCategory.where("name LIKE ? OR description LIKE ?", "%#{value}%", "%#{value}%").uniq
+    fetch_values(sub_category)
+  end
+
 end
