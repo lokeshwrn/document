@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :sub_category
   has_many :comments
-  has_many :tags
+  has_many :tags, through: :article_tags
 
   validates :title, presence: true
   validates :description, presence: true

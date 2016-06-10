@@ -12,6 +12,9 @@
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form_field' %>
       </div>
+
+      <input type="text" class="form-control" id="tokenfield" name="tetsing" />
+
       <div class="form_element">
         <%= f.label :description %>
         <%= f.text_field :description, class: 'form_field' %>
@@ -42,3 +45,4 @@
 <%= render :partial => 'layouts/jquery_validation' %>
 
 <%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
+
