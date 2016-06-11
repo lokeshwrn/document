@@ -23,7 +23,6 @@
 </head>
 <body>
 <header>
-  <%#= render 'layouts/menu' %>
 
     <div class="top-menu">
       <ul>
@@ -37,7 +36,21 @@
       </ul>
     </div>
 
-    <%= yield %>
+  <div class="main-menu">
+
+    <ul class="menu">
+      <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></li>
+      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Categories</span></a></li>
+      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Sub Categories</span></a></li>
+      <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a></li>
+      <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Documents</span></a></li>
+      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>More</span></a></li>
+    </ul>
+  </div>
+
+  <%#= render 'layouts/menu' %>
+
+  <%= yield %>
 
 </header>
 </body>

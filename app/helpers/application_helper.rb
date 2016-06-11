@@ -26,6 +26,12 @@ module ApplicationHelper
     end
   end
 
+  def custom_button_2(name="button", link="javascript(void)", align=nil)
+    content_tag :a, href: link, class: "#{align} button-1".strip do
+      content_tag :span, name
+    end
+  end
+
   # Submit tag
   def custom_submit_1(name="submit", class_name=nil, align=nil)
     submit_tag(name, class: "#{class_name} #{align} button".strip)
