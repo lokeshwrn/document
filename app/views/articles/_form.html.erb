@@ -37,7 +37,7 @@
     </div>
     <%= f.hidden_field :sub_category_id, :value => params[:sub_category_id] %>
     <div class="form_container_bottom" align="center">
-      <%= f.submit :submit, class: 'form_submit'%>
+      <%= custom_submit_1("submit") %>
     </div>
 <% end %>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
@@ -63,7 +63,6 @@
 //                    minChars: 2,
 //                    tokenLimit: 3,
                     searchDelay: 1000,
-
                 }
         );
     });

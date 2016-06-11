@@ -19,10 +19,16 @@ module ApplicationHelper
     hash
   end
 
-  def custom_button_1(name, link)
-    content_tag :a, href: link, class: "button" do
+  # anchor button
+  def custom_button_1(name="button", link="javascript(void)", align=nil)
+    content_tag :a, href: link, class: "#{align} button".strip do
       content_tag :span, name
     end
+  end
+
+  # Submit tag
+  def custom_submit_1(name="submit", class_name=nil, align=nil)
+    submit_tag(name, class: "#{class_name} #{align} button".strip)
   end
 
   def strip_html_tags(content)

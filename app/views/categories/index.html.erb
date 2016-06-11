@@ -1,8 +1,6 @@
 <div class="heading">
   <span><%= @page_properties[:header]%></span>
-    <a href="<%= '/categories/new' %>" class="button">
-      <span>New Category</span>
-    </a>
+  <%= custom_button_1("New Category", new_category_path, "right") %>
 </div>
 
 <% @breadcrumb ={:Home => "/", :Category => "#"}%>

@@ -2,42 +2,44 @@
   <span><%= @page_properties[:header] %></span>
 </div>
 
-<div class="parent-top col-md-12 col-sm-12 col-xs-12">
-	<div class="wrapper">
-		<div class="toppers">
-		  <h3>Top Scorers</h3>
-		  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="toppers">
-		    <%= render :partial => 'home/tab_listing' %>
-		  </div>
-		</div>
-	</div>
-</div>
+<div class="parent-block col-md-12 col-sm-12 col-xs-12">
+  <div class="parent col-md-12 col-sm-12 col-xs-12">
+    <div class="wrapper">
+      <div class="toppers">
+        <h3 class="space">Top Scorers</h3>
+        <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="toppers">
+          <%= render :partial => 'home/tab_listing' %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="parent-fav col-md-12 col-sm-12 col-xs-12">
-	<div class="wrapper">
-		<div class="favourites">
-		  <h3>My Favourites</h3>
-		  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="favourites">
-		    <%= render :partial => 'home/tab_listing' %>
-		  </div>
-		</div>
-	</div>
-</div>
+  <div class="parent col-md-12 col-sm-12 col-xs-12">
+    <div class="wrapper">
+      <div class="favourites">
+        <h3 class="space">My Favourites</h3>
+        <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="favourites">
+          <%= render :partial => 'home/tab_listing' %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="parent-search col-md-12 col-sm-12 col-xs-12">
-	<div class="wrapper">
-		<div class="search">
-		  <h3>Search</h3>
-		
-		  <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="search">
-		    <div class="search-form">
-		      <input type="text">
-		      <button type="submit">Search</button>
-		    </div>
-		    <%= render :partial => 'home/tab_listing' %>
-		  </div>
-		</div>
-	</div>
+  <div class="parent col-md-12 col-sm-12 col-xs-12">
+    <div class="wrapper">
+      <div class="search">
+        <h3 class="space">Search</h3>
+
+        <div class="my-tab col-md-12 col-sm-12 col-xs-12" id="search">
+          <div class="search-form">
+            <input type="text">
+            <button type="submit">Search</button>
+          </div>
+          <%= render :partial => 'home/tab_listing' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

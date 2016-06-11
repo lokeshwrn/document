@@ -27,56 +27,31 @@ h5{ font-size: 20px; padding: 2px 0px; }
 h6{ font-size: 16px; padding: 2px 0px; }
 mand{ color: red; }
 
+h3.space{margin:20px 0;}
 
-.wrapper{
-    width: 85%;
-    margin: 0px auto;
-}
-#header{
-    width:100%;
-    float:left;
-    border-bottom: 1px solid;
-}
-#bgimg{
-    background-image: url(img.jpg);
-    height: 500px;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-}
-.fa-star{
-    color:cornflowerblue;
-}
-.fa-star-o{
-    color:black;
-}
-.form_container_right{
-    width: 50%;
-    float: left;
-}
-.form_container_left{
-    width: 50%;
-    float: right;
-}
-.form_content{
-    height: 250px;
-    width: 100%;
-}
-.form_field{
-    width: 100%;
-    height: 25px;
-    border:1px solid gray;
-}
-.form_element{
-    padding: 10px 0px;
-    margin-right:10%;
-}
-body {
-    background-color: #fafafa;
-    /*font-family: 'Roboto', sans-serif;*/
-    font-family: 'Roboto Condensed', sans-serif;
-}
+body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
+.wrapper{ width: 85%; margin: 0px auto; }
+
+.parent-block{padding:0;margin:0;}
+.parent{padding:20px 0px;}
+.parent:nth-child(1){background-color:#4ECDC4;}
+.parent:nth-child(2){background-color:#03C9A9;}
+.parent:nth-child(3){background-color:#36D7B7;}
+
+.fa-star{ color:cornflowerblue; }
+.fa-star-o{ color:black; }
+.left{float:left;}
+.right{float:right;}
+
+
+/* FORM ELEMENTS*/
+
+.form_container_right{ width: 50%; float: left; }
+.form_container_left{ width: 50%; float: right; }
+.form_content{ height: 250px; width: 100%; }
+.form_field{ width: 100%; height: 25px; border:1px solid gray; }
+.form_element{ padding: 10px 0px; margin-right:10%; }
+
 
 .top-menu ul{
     list-style: none;
@@ -94,23 +69,22 @@ body {
     background-color: transparent;
     margin: 0.5%;
     border: 1px solid white;
+    border-right:none;
 }
 .head{
     width: 100%;
     text-align: left;
     float: left;
-    /*padding: 5px;*/
-    /*mar: 2%;*/
 }
 .title{
     width: 68%;
     float: left;
     padding: 2%;
-    min-height:105px;
+    min-height:106px;
 }
 .rating{
     width: 32%;
-    float: left;
+    float: right;
     color:green;
     padding: 4% 8%;
 }
@@ -122,10 +96,10 @@ body {
     padding: 4% 2%;
     border-right:2px solid #2071ee;
     border-left:1px solid lightgray;
-    min-height:105px;
+    min-height:106px;
 }
 .count span{
-    display: block;
+    display: inline-block;
     line-height: 1;
     font-size: 35px;
     margin-bottom: 5px;
@@ -161,6 +135,7 @@ body {
 }
 .article:hover .title{background-color:#FFF;}
 .article:hover .title h3, .article:hover .title h6{color:#2071ee;}
+
 h6.hr_line{
     display: block;
     line-height: 1;
@@ -193,13 +168,16 @@ h6.hr_line::after{
 }
 .button{
     border: 1px solid #2071ee;
-    float: right;
     font-size: 14px;
     margin: 10px;
     padding: 15px;
     display: block;
     line-height: 1;
     position: relative;
+    max-width:150px;
+    text-align:center;
+    min-width:100px;
+    text-transform: capitalize;
 
     -webkit-transition: background-color 300ms linear, color 500ms ease;
     -moz-transition: background-color 300ms linear, color 500ms ease;
@@ -212,48 +190,29 @@ h6.hr_line::after{
     background-color: #2071ee;
     border:1px solid #2071ee;
 }
-.heading span{
-    position: relative;
-}
 
+.heading span{ position: relative; }
 
-@media screen and (min-width: 765px) and (max-width:1024px) {
-    #wrapper{
-        width: 755px;
-        margin: 0px auto;
-        padding: 0px 5px;
-    }
-    .article{
-        width:30%;
-        float:left;
-        margin:0px;
-    }
-    .title{width:60%;float:left;}
-    .rating{width:28%;float:left;}
-    .title span h6{font-size:11px;}
-}
-
-/*SITE_MAP*/
-.my-tab .nav li{padding-left:0;margin-bottom:0;font-size:18px!important;border:2px solid transparent;position:relative;bottom:-2px;border-radius:3px;}
-.my-tab .nav li a{outline:none;font-weight:400;color:#000;min-height:60px;z-index:10;padding:10px 5px 5px;border-color:transparent!important;cursor:pointer;}
+/* TAB STRUCTURE */
+.my-tab .nav li{padding-left:0;margin-bottom:0;font-size:18px!important;border:2px solid transparent;position:relative;bottom:-2px;border-top-left-radius:5px;border-top-right-radius:5px;}
 .my-tab .nav li.active{border:2px solid #000;border-bottom-color:#FFF;z-index:10;}
-.my-tab .nav li.active a{color:#0080ff;}
-.my-tab .nav li:hover a{background-color:lightgray;}
-.my-tab .nav li.active:hover a{background-color:#FFF;z-index:10;}
-.my-tab .nav li::before{content:"";font-size:0px;margin:0;}
-/*.my-tab .nav li a:focus{border-bottom:1px solid #0080ff;}*/
+.my-tab .nav li:before{content:"";font-size:0px;margin:0;}
+.my-tab .nav li a{outline:none;font-weight:400;color:#000;min-height:60px;z-index:10;padding:10px 5px 5px;border-color:transparent!important;cursor:pointer;}
+.my-tab .nav li.active a{color:#0080ff;background-color:transparent;}
+.my-tab .nav li:hover a{background-color:transparent;}
+.my-tab .nav li.active:hover a{background-color:transparent;z-index:10;}
+.my-tab .nav li a span{position:relative;color:#555;}
+.my-tab .nav li a span:before{ border: 1px solid; content: ""; position: absolute; top: 25px; width: 10%; transition: all 0.5s ease 0s; }
+.my-tab .nav li:hover a span{color:#000;}
+.my-tab .nav li:hover a span:before{width:100%;}
 .my-tab h3{margin-bottom:20px;}
-.my-tab h3,.my-tab h6{color:#FFF;}
-.my-tab h3:hover{color:inherit;}
+.my-tab h3, .my-tab h6{color:#FFF;}
 .my-tab .tab-content{padding:2%;border-top:2px solid #000;z-index:0;}
-.my-tab img{z-index:1;}
+.my-tab img{z-index:1; position: absolute; right: 48%; top: 150px; display:none;mix-blend-mode:multiply; }
+.my-tab .loader{opacity:0.7;}
 
-.my-tab .device-content{display:none;}
 
-.my-tab img { position: absolute; right: 48%; top: 150px; display:none;mix-blend-mode:multiply; }
-.my-tab .loader{opacity:0.6;}
+/*.parent-top{background-color:#4ECDC4;}*/
+/*.parent-fav{background-color:#03C9A9;}*/
+/*.parent-search{background-color:#36D7B7;}*/
 
-.parent-top{background-color:#4ECDC4;}
-.parent-fav{background-color:#03C9A9;}
-.parent-search{background-color:#36D7B7;}
-.parent-top,.parent-fav,.parent-search{padding:20px 0px;}
