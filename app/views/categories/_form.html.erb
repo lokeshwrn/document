@@ -4,6 +4,7 @@
 
 <% @breadcrumb = {:Home => "/", :Category => "/categories"} %>
 <% @category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[:Edit] = "#") %>
+
 <%= render :partial => 'layouts/bread_crumb'%>
 
 <%= form_for @category, method: :post, :url => @category.new_record? ? :create_category : :update_category do |f| %>

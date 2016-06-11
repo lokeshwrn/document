@@ -25,4 +25,32 @@ module ApplicationHelper
     end
   end
 
+  def strip_html_tags(content)
+    content = content.gsub("</p>", "</p> ").gsub("<br />", "<br /> ").strip
+    decoder = HTMLEntities.new
+    decoder.decode(Sanitize.clean(content))
+  end
+
+  def auto_complete_tag(name:, data:, selected:, hintText:"Enter Search Terms", searchingText:"Querying", noResultsText:"Nothing found" )
+    collection=data.collect{|x| {id: x.id, name: x.name}.to_json}
+    selection=selected.collect{|x| {id: x.id, name: x.name}.to_json}
+
+    "
+    <input type='text' id='demo-indput-local' name=#{name} />
+    <script>
+$(document).ready(function(){
+    $('#demo-indput-local').tokenInput(#{collection},
+        {
+            prePopulate: #{selection},
+            preventDuplicates: true,
+            hintText: '#{hintText}',
+            searchingText: '#{searchingText}',
+            noResultsText: '#{noResultsText}',
+            searchDelay: 1000,
+
+    });
+});
+</script> "
+  end
+
 end

@@ -39,4 +39,8 @@ class Tag < ActiveRecord::Base
     fetch_values(tag)
   end
 
+  def articles
+
+  end
+
 end

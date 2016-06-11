@@ -12,13 +12,15 @@
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form_field' %>
       </div>
-
-      <input type="text" class="form-control" id="tokenfield" name="tetsing" />
-
       <div class="form_element">
         <%= f.label :description %>
         <%= f.text_field :description, class: 'form_field' %>
       </div>
+
+      <input type="text" id="demo-input-local" name="blah" />
+
+      <%#= raw auto_complete_tag(name: "tag_ids", data: Category.all, selected: @article.tags, hintText: "Enter Search Terms", searchingText: "Querying", noResultsText: "No Results") %>
+
       <div class="form_element">
         <%= f.label :reference_url %>
         <%= f.text_field :reference_url, class: 'form_field' %>
@@ -45,4 +47,35 @@
 <%= render :partial => 'layouts/jquery_validation' %>
 
 <%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
+<% collection=Category.all.collect{|x| {id: x.id, name: x.name}.to_json} %>
+<% selection=nil #@article.tags.collect{|x| {id: x.id, name: x.name}.to_json} %>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#demo-input-local").tokenInput(
+                '/autocomplete?hash='+'<%= collection %>',
+                {
+                    prePopulate: <%= selection %>,
+                    preventDuplicates: true,
+                    hintText: "Enter Search Terms",
+                    searchingText: "Querying",
+                    noResultsText: "Nothing found",
+//                    minChars: 2,
+//                    tokenLimit: 3,
+                    searchDelay: 1000,
+
+                }
+        );
+    });
+
+    $('#demo-input-local').tokenInput(['{"id":1,"name":"test1"}',
+        '{"id":2,"name":"test2"}',
+        '{"id":3,"name":"test3"}'], {
+        prePopulate: [],
+        preventDuplicates: true,
+        hintText: EnterSearchTerms,
+        searchingText: Querying,
+        noResultsText: NoResults,
+        searchDelay: 1000,
+    });
+</script>

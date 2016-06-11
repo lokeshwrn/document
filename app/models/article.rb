@@ -31,4 +31,8 @@ class Article < ActiveRecord::Base
     fetch_values(article, "url_helpers.show_article_path(y.sub_category_id, y.id)")
   end
 
+  def tags
+
+  end
+
 end
