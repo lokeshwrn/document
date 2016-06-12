@@ -6,10 +6,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @page_properties={:header => "Category"}
     @category = Category.find_by_id(params[:id])
+    @page_properties={:header => @category.try(:name).to_s.upcase}
     @sub_category = @category.sub_categories.where(:status=>true)
-    render :controller => 'sub_categories', :action => 'index'
   end
 
   def new
@@ -31,18 +30,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def save
-    flag=false
-    if params[:commit] == "Create"
-      @category = Category.new(category_params)
-      flag=@category.save
-    elsif params[:commit] == "Update"
-      @category = Category.find(params[:id])
-      flag=@category.update(category_params)
-    end
-    flag ? (redirect_to categories_path) : (render 'new')
-  end
-
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
@@ -55,7 +42,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description, :status)
+    params.require(:category).permit(:name, :description, :status, :favourite)
   end
 
 end

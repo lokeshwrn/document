@@ -1,10 +1,11 @@
-<div class="heading">
-  <span><%= @page_properties[:header]%></span>
-  <%= custom_button_1("New Category", new_category_path, "right") %>
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header]%></h3>
+    <%= custom_button_1("New Category", new_category_path, "right") %>
+  </div>
+
+  <% @breadcrumb ={:Home => "/", :Category => "#"}%>
+  <%= render :partial => 'layouts/bread_crumb' %>
+
+  <%= render :partial => 'categories/categories_block' %>
 </div>
-
-<% @breadcrumb ={:Home => "/", :Category => "#"}%>
-<%= render :partial => 'layouts/bread_crumb' %>
-
-<%= render :partial => 'categories/categories_block' %>
-

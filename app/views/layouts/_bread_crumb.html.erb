@@ -2,7 +2,7 @@
   <ul class="breadcrumb">
      <% @breadcrumb.each do |key,val| %>
         <% if val!="#" %>
-            <li><a href="<%= val %>"><%= key.to_s.gsub('_',' ') %></a></li>
+            <li><a href="<%= val %>"><%= key.to_s.gsub('_',' ').titlecase %></a></li>
         <% else %>
             <li><%= key.to_s.gsub('_',' ').titlecase %></li>
         <% end %>

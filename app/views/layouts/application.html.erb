@@ -53,7 +53,7 @@
           <ul class="no-margin">
             <% @categories.each do |cat| %>
                 <li>
-                  <a href="<%= sub_categories_path(cat.id) %>">
+                  <a href="<%= show_category_path(cat.id) %>">
                     <%= cat.name %>
                   </a>
                 </li>

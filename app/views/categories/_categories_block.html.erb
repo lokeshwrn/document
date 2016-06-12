@@ -1,7 +1,7 @@
 <%if @category.present?%>
     <div class="index" align="center">
       <% @category.each do |a| %>
-          <a href="<%= "/categories/#{a.id.to_s}/sub-categories" %>">
+          <a href="<%= show_category_path(a.id.to_s) %>">
             <div class="article">
               <div class="head">
                 <div class="title">
