@@ -6,7 +6,7 @@
 
 </div>
 
-<% @breadcrumb ={:Home => "/", :Category => "/categories", :Sub_Category => "#"}%>
+<% @breadcrumb ={:Home => root_path, @category.name => categories_path, :Sub_Category => "#"}%>
 <%= render :partial => 'layouts/bread_crumb'%>
 
 <%= render :partial => 'sub_categories/sub_categories_block' %>

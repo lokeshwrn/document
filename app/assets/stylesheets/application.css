@@ -199,8 +199,8 @@ h6.hr_line::after{
 .my-tab .nav li.active:hover a{background-color:transparent;z-index:10;}
 .my-tab .nav li a span{position:relative;color:#555;}
 .my-tab .nav li a span:before{ border: 1px solid; content: ""; position: absolute; top: 25px; width: 10%; transition: all 0.5s ease 0s; }
-.my-tab .nav li:hover a span{color:#000;}
-.my-tab .nav li:hover a span:before{width:100%;}
+.my-tab .nav li:hover a span, .my-tab .nav li.active a span{color:#000;}
+.my-tab .nav li:hover a span:before, .my-tab .nav li.active a span:before{width:100%;}
 .my-tab h3{margin-bottom:20px;}
 .my-tab h3, .my-tab h6{color:#FFF;}
 .my-tab .tab-content{padding:2%;z-index:0;}
