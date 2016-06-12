@@ -31,6 +31,18 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def save
+    flag=false
+    if params[:commit] == "Create"
+      @category = Category.new(category_params)
+      flag=@category.save
+    elsif params[:commit] == "Update"
+      @category = Category.find(params[:id])
+      flag=@category.update(category_params)
+    end
+    flag ? (redirect_to categories_path) : (render 'new')
+  end
+
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
@@ -38,10 +50,6 @@ class CategoriesController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def destroy
-
   end
 
   private

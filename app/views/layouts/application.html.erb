@@ -22,7 +22,6 @@
 
 </head>
 <body>
-<header>
 <div id="wrapper" class="toggled">
   <div id="sidebar-wrapper">
     <a id="menu-toggle" href="#menu-toggle"><span></span><span></span><span></span></a>
@@ -48,19 +47,39 @@
     </ul>
   </div>
   <div id="page-content-wrapper">
-  <div class="container-fluid no-padding">
-    <div class="top-menu">
-      <ul class="no-margin">
-        <% @categories.each do |cat| %>
-            <li>
-              <a href="<%= sub_categories_path(cat.id) %>">
-                <%= cat.name %>
-              </a>
-            </li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="container-fluid no-padding">
+      <header>
+        <div class="top-menu">
+          <ul class="no-margin">
+            <% @categories.each do |cat| %>
+                <li>
+                  <a href="<%= sub_categories_path(cat.id) %>">
+                    <%= cat.name %>
+                  </a>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </header>
 
+      <!--<div class="main-menu">
+
+        <ul class="menu">
+          <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></li>
+          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Categories</span></a></li>
+          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Sub Categories</span></a></li>
+          <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a></li>
+          <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Documents</span></a></li>
+          <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>More</span></a></li>
+        </ul>
+      </div>-->
+
+      <%#= render 'layouts/menu' %>
+
+      <%= yield %>
+    </div>
+  </div>
+</div>
 <script>
     $('.sub-menu-toggle').click(function(e){
         e.preventDefault();
@@ -77,26 +96,6 @@
 
     });
 </script>
-
-  <!--<div class="main-menu">
-
-    <ul class="menu">
-      <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></li>
-      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Categories</span></a></li>
-      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>Sub Categories</span></a></li>
-      <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i><span>Tags</span></a></li>
-      <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Documents</span></a></li>
-      <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>More</span></a></li>
-    </ul>
-  </div>-->
-
-  <%#= render 'layouts/menu' %>
-
-  <%= yield %>
-  </div>
-  </div>
-  </div>
-</header>
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 </html>

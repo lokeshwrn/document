@@ -8,7 +8,7 @@
 <%= render :partial => 'layouts/bread_crumb'%>
 
 <%= form_for @category, method: :post, :url => @category.new_record? ? :create_category : :update_category do |f| %>
-    <div class="form_container_right">
+    <div class="form_container_right settings">
       <div class="form_element">
         <%= f.label :Name %>
         <%= f.text_field :name, class: 'form_field' %>
