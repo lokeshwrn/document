@@ -26,6 +26,8 @@ h4{ font-size: 30px; padding: 2px 0px; }
 h5{ font-size: 20px; padding: 2px 0px; }
 h6{ font-size: 16px; padding: 2px 0px; }
 mand{ color: red; }
+.no-padding{padding:0;}
+.no-margin{margin:0;}
 
 h3.space{margin:20px 0;}
 
@@ -86,8 +88,28 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .main-menu ul li:nth-child(4) i{background-color: rgb(42,120,166);}
 .main-menu ul li:nth-child(5) i{background-color: rgb(65,85,98);}
 .main-menu ul li:nth-child(6) i{background-color: rgb(59,72,80);}
+.toggled{padding-left:20%;}
 
 
+
+
+.side-menu {
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 100;
+    height:100%;
+
+}
+
+.my-menu{
+    width:100%;
+    height:100%;
+    background-color:lightgray;
+}
+
+
+/* BREADCRUMB */
 .breadcrumb > li + li::before { padding: 0 16px; }
 .breadcrumb li a:hover{color:#2071ee;}
 
@@ -214,3 +236,127 @@ h6.hr_line::after{
 .search-form button{ height:40px; min-width:10%; background-color: transparent; border: none; position:absolute; right:25%; border-left:1px solid; }
 .search-form button i { font-size: 20px; position: absolute; right: 40%; top: 25%; transition: all 0.3s ease 0s; }
 .search-form button:hover i{ color:#666;}
+
+
+
+
+
+/*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Toggle Styles */
+
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+.sidebar-nav {
+    padding-top: 100px;
+    width: 250px;
+    margin: 0;
+    list-style: none;
+}
+
+#menu-toggle {
+    float: right;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    color:#fff;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    display:inline-block;
+    width:100%;
+}
+
+.sidebar-nav li a {
+    text-decoration: none;
+    color: #999;
+    width:100%;
+    padding:10px 0;
+    float:left;
+}
+.sidebar-nav li i {
+    color: #eee;
+    display: inline;
+    font-size: 25px;
+    padding-right:25px;
+}
+.sidebar-nav li a:hover{ background-color:#333333; text-decoration: none; color: #fff; }
+.sidebar-nav li a:active, .sidebar-nav li a:focus { text-decoration: none; }
+.toggleed > #page-content-wrapper{padding:0 0 0 4%;}
+
+.second-level-menu{display:none;}
+.second-level-menu li { display: block; margin-left:40px; }
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 4%;
+    }
+
+    #page-content-wrapper {
+        padding:0;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

@@ -23,7 +23,31 @@
 </head>
 <body>
 <header>
+<div id="wrapper" class="toggled">
+  <div id="sidebar-wrapper">
+    <a id="menu-toggle" href="#menu-toggle">Menu</a>
+    <ul class="sidebar-nav">
+      <%= direct_link_menu("Home", "/", "fa-home") %>
+      <%= parent_with_submenu("Categories", "fa-tags", {"New Category"=>new_category_path, "List Category"=>categories_path}) %>
+      <%= parent_with_submenu("Sub Categories", "fa-tags", {"New Sub Category"=>new_sub_category_path, "List Sub Category"=>sub_categories_path}) %>
+      <%= direct_link_menu("Tags", "/tags", "fa-tags") %>
+      <%= direct_link_menu("Articles", "/articles", "fa-book") %>
 
+      <!-- direct link menu -->
+      <!--<li><a href="/sub-categories"><i class="fa fa-home" aria-hidden="true"></i>Sub Categories</a></li>-->
+
+      <!-- parent with submenu -->
+      <!--<li><a href="#" class="sub-menu-toggle"><i class="fa fa-home" aria-hidden="true"></i><span>Sub Categories</span></a>
+        <ul class="second-level-menu">
+          <li><a href="#">New Sub Category</a></li>
+          <li><a href="#">List Sub Category</a></li>
+        </ul>
+      </li>-->
+
+    </ul>
+  </div>
+  <div id="page-content-wrapper">
+  <div class="container-fluid no-padding">
     <div class="top-menu">
       <ul>
         <% @categories.each do |cat| %>
@@ -36,7 +60,20 @@
       </ul>
     </div>
 
-  <div class="main-menu">
+<script>
+    $('.sub-menu-toggle').click(function(e){
+        e.preventDefault();
+        $('.second-level-menu').hide(500);
+        $(this).next('.second-level-menu').toggle(500);
+    });
+
+  $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
+  <!--<div class="main-menu">
 
     <ul class="menu">
       <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i><span>Home</span></a></li>
@@ -46,12 +83,14 @@
       <li><a href="#"><i class="fa fa-book" aria-hidden="true"></i><span>Documents</span></a></li>
       <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i><span>More</span></a></li>
     </ul>
-  </div>
+  </div>-->
 
   <%#= render 'layouts/menu' %>
 
   <%= yield %>
-
+  </div>
+  </div>
+  </div>
 </header>
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">

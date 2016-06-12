@@ -37,6 +37,42 @@ module ApplicationHelper
     submit_tag(name, class: "#{class_name} #{align} button".strip)
   end
 
+  def direct_link_menu(name, link, symbol)
+    content_tag :li do
+      content_tag :a, href: link do
+        content_tag(:i, nil, class: "fa #{symbol}".strip) + content_tag(:span, name)
+      end
+    end
+    #<li><a href="/"><i class="fa fa-home"></i>Home</a></li>
+  end
+
+  def parent_with_submenu(name, symbol, options)
+    x=content_tag :a, href: "#", class: "sub-menu-toggle" do
+      content_tag(:i, nil, class: "fa #{symbol}".strip) + content_tag(:span, name)
+    end
+
+    y=content_tag :ul, nil, class: "second-level-menu" do
+      options.each do |value, link|
+        concat content_tag(:li, content_tag(:a, value, href: link))
+      end
+    end
+
+    content_tag :li do
+      x+y
+    end
+
+    # <li>
+    # <a href="#" class="sub-menu-toggle">
+    #   <i class="fa fa-home"></i>
+    #   <span>Categories</span>
+    # </a>
+    # <ul class="second-level-menu">
+    #   <li><a href="#">New Sub Category</a></li>
+    #   <li><a href="#">List Sub Category</a></li>
+    # </ul>
+    #</li>
+  end
+
   def strip_html_tags(content)
     content = content.gsub("</p>", "</p> ").gsub("<br />", "<br /> ").strip
     decoder = HTMLEntities.new
