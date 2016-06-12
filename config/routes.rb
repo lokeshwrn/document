@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # #  CATEGORIES ROUTES
   get '/categories' => 'categories#index', :as => :categories
-  get '/categories/:id' => 'categories#show', :as => :show_category
+  get '/categories/:id' => 'categories#show', :as => :show_category, :id=>/\d+/
 
   get '/categories/:id/edit' => 'categories#edit', :as => :edit_category
   get '/categories/new' => 'categories#new', :as => :new_category
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # #  SUB CATEGORIES ROUTES
   get '/sub-categories' => 'sub_categories#index', :as => :sub_categories
-  get '/sub-categories/:id' => 'sub_categories#show', :as => :show_sub_category
+  get '/sub-categories/:id' => 'sub_categories#show', :as => :show_sub_category, :id=>/\d+/
 
   get '/sub-categories/:id/edit' => 'sub_categories#edit', :as => :edit_sub_category
   get '/sub-categories/new' => 'sub_categories#new', :as => :new_sub_category
@@ -29,14 +29,14 @@ Rails.application.routes.draw do
 
   # #  ARTICLE ROUTES
   get '/articles' => 'articles#index', :as => :articles
-  get '/articles/:id' => 'articles#show', :as => :show_article
+  get '/articles/:id' => 'articles#show', :as => :show_article, :id=>/\d+/
 
   get '/articles/:id/edit' => 'articles#edit', :as => :edit_article
   get '/articles/new' => 'articles#new', :as => :new_article
   post '/articles/create' => 'articles#create', :as => :create_article
   post '/articles/update' => 'articles#update', :as => :update_article
 
-  get ':id' => 'home#tiny_url', :article_id => /(\d+)/, :as => :tiny_url
+  get ':id' => 'home#tiny_url', :article_id => /\d+/, :as => :tiny_url
 
 
   # get 'comments/create'

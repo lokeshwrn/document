@@ -25,8 +25,9 @@
 <header>
 <div id="wrapper" class="toggled">
   <div id="sidebar-wrapper">
-    <a id="menu-toggle" href="#menu-toggle">Menu</a>
+    <a id="menu-toggle" href="#menu-toggle"><span></span><span></span><span></span></a>
     <ul class="sidebar-nav">
+
       <%= direct_link_menu("Home", "/", "fa-home") %>
       <%= parent_with_submenu("Categories", "fa-tags", {"New Category"=>new_category_path, "List Category"=>categories_path}) %>
       <%= parent_with_submenu("Sub Categories", "fa-tags", {"New Sub Category"=>new_sub_category_path, "List Sub Category"=>sub_categories_path}) %>
@@ -49,7 +50,7 @@
   <div id="page-content-wrapper">
   <div class="container-fluid no-padding">
     <div class="top-menu">
-      <ul>
+      <ul class="no-margin">
         <% @categories.each do |cat| %>
             <li>
               <a href="<%= sub_categories_path(cat.id) %>">
@@ -65,11 +66,15 @@
         e.preventDefault();
         $('.second-level-menu').hide(500);
         $(this).next('.second-level-menu').toggle(500);
+        $("#wrapper").removeClass("toggled");
+        $("#menu-toggle").addClass("opened");
     });
 
-  $("#menu-toggle").click(function(e) {
+    $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+        $("#menu-toggle").toggleClass("opened");
+
     });
 </script>
 

@@ -5,6 +5,13 @@ class CategoriesController < ApplicationController
     @category = Category.where(:status => true)
   end
 
+  def show
+    @page_properties={:header => "Category"}
+    @category = Category.find_by_id(params[:id])
+    @sub_category = @category.sub_categories.where(:status=>true)
+    render :controller => 'sub_categories', :action => 'index'
+  end
+
   def new
     @page_properties={:header => "New Category"}
     @category = Category.new

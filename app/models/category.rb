@@ -18,16 +18,16 @@ class Category < ActiveRecord::Base
   end
 
   def self.get_favourites
-    fetch_values(Category.by_favs.first(6), "url_helpers.sub_categories_path(y.id)")
+    fetch_values(Category.by_favs.first(6), "url_helpers.show_category_path(y.id)")
   end
 
   def self.get_toppers
-    fetch_values(Category.top_by_count.first(6), "url_helpers.sub_categories_path(y.id)")
+    fetch_values(Category.top_by_count.first(6), "url_helpers.show_category_path(y.id)")
   end
 
   def self.get_search(value)
     categories=Category.where("name LIKE ? OR description LIKE ?", "%#{value}%", "%#{value}%").uniq
-    fetch_values(categories, "url_helpers.sub_categories_path(y.id)")
+    fetch_values(categories, "url_helpers.show_category_path(y.id)")
   end
 
 end
