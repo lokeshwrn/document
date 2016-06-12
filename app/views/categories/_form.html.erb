@@ -18,10 +18,12 @@
         <%= f.label :Description %>
         <%= f.text_field :description, class: 'form_field' %>
       </div>
+
       <div class="form_element">
-        <%= f.label :Publish %>
-        <%= check_box_tag 'category[status]', true, @category.status %>
+        <label>Status</label>
+        <%= custom_check_box_1("category[status]", true, @category.status, "category_status") %>
       </div>
+
       <div class="form_element" align="center">
         <%= f.submit :submit %>
       </div>
