@@ -1,10 +1,16 @@
-<div class="heading">
-  <span><%= @page_properties[:header]%></span>
-</div>
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header] %></h3>
+  </div>
 
-<% @breadcrumb ={:Home => root_path, :Category => categories_path, :Sub_Category => sub_categories_path(@sub_category.category_id), :Articles => "/sub-categories/#{@sub_category.id}/articles", @article.title => "#"} %>
-<%= render :partial => 'layouts/bread_crumb'%>
+  <% @breadcrumb ={:Home => root_path, :Category => categories_path, @article.category.name => show_category_path(@article.category.id), @article.sub_category.name => show_sub_category_path(@article.sub_category_id), @article.title => "#"} %>
+  <%= render :partial => 'layouts/bread_crumb'%>
 
-<div class="description">
-	<%= @article.description %>
+  <div class="description">
+    <%= @article.description %>
+  </div>
+
+  <div class="content">
+    <%= raw @article.content %>
+  </div>
 </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tags/index'
+
   get 'home/dashboard' => 'home#dashboard'
   root 'home#dashboard'
 
@@ -8,33 +10,34 @@ Rails.application.routes.draw do
   post '/get_search' => 'home#get_search'
 
   # #  CATEGORIES ROUTES
-  get '/categories' => 'categories#index', :as => :categories
   get '/categories/:id' => 'categories#show', :as => :show_category, :id=>/\d+/
 
-  get '/categories/:id/edit' => 'categories#edit', :as => :edit_category
-  get '/categories/new' => 'categories#new', :as => :new_category
   post '/categories/create' => 'categories#create', :as => :create_category
   post '/categories/update' => 'categories#update', :as => :update_category
 
 
   # #  SUB CATEGORIES ROUTES
-  get '/sub-categories' => 'sub_categories#index', :as => :sub_categories
   get '/sub-categories/:id' => 'sub_categories#show', :as => :show_sub_category, :id=>/\d+/
 
-  get '/sub-categories/:id/edit' => 'sub_categories#edit', :as => :edit_sub_category
-  get '/sub-categories/new' => 'sub_categories#new', :as => :new_sub_category
   post '/sub-categories/create' => 'sub_categories#create', :as => :create_sub_category
   post '/sub-categories/update' => 'sub_categories#update', :as => :update_sub_category
 
 
   # #  ARTICLE ROUTES
-  get '/articles' => 'articles#index', :as => :articles
   get '/articles/:id' => 'articles#show', :as => :show_article, :id=>/\d+/
 
-  get '/articles/:id/edit' => 'articles#edit', :as => :edit_article
-  get '/articles/new' => 'articles#new', :as => :new_article
   post '/articles/create' => 'articles#create', :as => :create_article
   post '/articles/update' => 'articles#update', :as => :update_article
+
+
+  # #  TAGS ROUTES
+  get '/tags/:id' => 'tags#show', :as => :show_tag, :id=>/\d+/
+
+  post '/tags/create' => 'tags#create', :as => :create_tag
+  post '/tags/update' => 'tags#update', :as => :update_tag
+
+  resources :articles, :categories, :sub_categories, :tags
+
 
   get ':id' => 'home#tiny_url', :article_id => /\d+/, :as => :tiny_url
 
@@ -43,7 +46,6 @@ Rails.application.routes.draw do
   #
   # get 'sessions/create'
   #
-  # resources :articles, :categories, :sub_categories
 
   # resources :users do
   #   get 'index'

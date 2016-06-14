@@ -53,9 +53,10 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .form_content{ height: 250px; width: 100%; }
 .form_field{ width: 100%; height: 25px; border:1px solid gray; }
 .form_element{ padding: 10px 0; margin-right:10%; height: 80px;}
+.form_element label{ text-transform: uppercase; }
 .form_element input{background-color:transparent;border: none;border-bottom: 1px solid;}
 .form_element.check_box > label { display: table-cell; vertical-align: middle; width: 20%; }
-.form_element .switch { display: table-cell; text-align: center; vertical-align: middle; width: 50%; }
+.form_element .switch{ display: table-cell; text-align: center; vertical-align: middle; width: 50%; }
 .form_element.check_box{display: table-row;}
 
 
@@ -106,7 +107,6 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
     height:100%;
 
 }
-
 .my-menu{
     width:100%;
     height:100%;
@@ -115,18 +115,37 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 
 
 /* BREADCRUMB */
-.breadcrumb > li + li::before { padding: 0 16px; color:#000;}
-.breadcrumb li a:hover{color:#2071ee;}
-.breadcrumb{background-color: transparent; border-radius: 0; }
-
-.article{
-    width: 32%;
-    display: inline-block;
-    background-color: transparent;
-    margin: 0.5%;
-    border: 1px solid white;
-    border-right:none;
+.breadcrumbs > li a:after, .breadcrumbs > li span:after {
+    border-bottom: 16px solid transparent;
+    border-left: 12px solid #fff;
+    border-top: 16px solid transparent;
+    content: "";
+    position: absolute;
+    right: -12px;
+    top: 0;
+    z-index: 1;
 }
+.breadcrumbs > li a:before, .breadcrumbs > li span:before {
+    border-bottom: 16px solid transparent;
+    border-left: 12px solid rgb(54, 215, 183);
+    border-top: 16px solid transparent;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.breadcrumbs > li{list-style: outside none none;display:inline;}
+.breadcrumbs > li a, .breadcrumbs > li span { background-color: #fff; padding: 7px 6px 7px 17px; position: relative; }
+.breadcrumbs > li:first-child a:before{content:none;}
+.breadcrumbs > li a:hover{background-color: #0080ff;}
+.breadcrumbs > li a:hover:after{border-left-color: #0080ff;}
+.breadcrumbs > li a:hover{color:#fff;}
+
+
+.index h3, .index h6{color:#FFF;}
+.index h3{margin-bottom:10px;}
+
+.article{ width: 32%; display: inline-block; background-color: transparent; margin: 0.5%; border: 1px solid white; border-right:none; }
 .head{ width: 100%; text-align: left; float: left; }
 .title{ width: 68%; float: left; padding: 2%; min-height:108px; }
 .rating{ width: 32%; float: right; color:green; padding: 4% 8%; }
@@ -159,30 +178,10 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .article:hover .title{background-color:#eee;}
 .article:hover .title h3, .article:hover .title h6{color:#2071ee;}
 
-h6.hr_line{
-    display: block;
-    line-height: 1;
-    padding-bottom: 10px;
-    position: relative;
-}
-h6.hr_line::after{
-    background: #000 none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 1px;
-    right: 0;
-    position: absolute;
-    width: 100%;
-}
+h6.hr_line{ display: block; line-height: 1; padding-bottom: 10px; position: relative; }
+h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: ""; height: 1px; right: 0; position: absolute; width: 100%; }
 .article:hover .count span::after{ background: #fff none repeat scroll 0 0; }
-.heading > span::after{
-    border-bottom: 3px double #2071ee;
-    bottom: -10px;
-    content: " ";
-    left: 25%;
-    position: absolute;
-    width: 50%;
-}
+.heading > span::after{ border-bottom: 3px double #2071ee; bottom: -10px; content: " "; left: 25%; position: absolute; width: 50%; }
 .heading{ font-size: 50px; padding: 2% 0; }
 .heading span{ position: relative; }
 
@@ -216,8 +215,7 @@ h6.hr_line::after{
 .my-tab .nav li a span:before{ border: 1px solid; content: ""; position: absolute; top: 25px; width: 10%; transition: all 0.5s ease 0s; }
 .my-tab .nav li:hover a span, .my-tab .nav li.active a span{color:#000;}
 .my-tab .nav li:hover a span:before, .my-tab .nav li.active a span:before{width:100%;}
-.my-tab h3{margin-bottom:10px;}
-.my-tab h3, .my-tab h6{color:#FFF;}
+
 .my-tab .tab-content{padding:2%;z-index:0;}
 .my-tab img{z-index:1; position: absolute; right: 48%; top: 200px; display:none;mix-blend-mode:multiply; }
 .my-tab .loader{opacity:0.7;}
@@ -229,7 +227,6 @@ h6.hr_line::after{
 .search-form button{ height:40px; min-width:10%; background-color: transparent; border: none; position:absolute; right:25%; border-left:1px solid; }
 .search-form button i { font-size: 20px; position: absolute; right: 40%; top: 25%; transition: all 0.3s ease 0s; }
 .search-form button:hover i{ color:#666;}
-
 
 
 /* SIDE MENU */
@@ -256,7 +253,7 @@ h6.hr_line::after{
     position: fixed;
     left: 0;
     height: 100%;
-    overflow-y: auto;
+    overflow: hidden;
     background-color: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;

@@ -5,10 +5,15 @@ class SubCategoriesController < ApplicationController
     @sub_category = SubCategory.where(:status=>true)
   end
 
+  def show
+    @sub_category = SubCategory.find_by_id(params[:id])
+    @page_properties={:header => @sub_category.try(:name).to_s.upcase}
+    @articles = @sub_category.articles.where(:status=>true)
+  end
+
   def new
     @page_properties={:header => "New Sub Category"}
-    @category = Category.find(params[:category_id])
-    @sub_category = @category.sub_categories.new
+    @sub_category = SubCategory.new
   end
 
   def edit
@@ -17,10 +22,9 @@ class SubCategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.find(params[:category_id])
-    @sub_category = @category.sub_categories.new(sub_category_params)
+    @sub_category = SubCategory.new(sub_category_params)
     if @sub_category.save
-      redirect_to sub_categories_path(@category.id)
+      redirect_to sub_categories_path
     else
       render 'new'
     end
@@ -43,7 +47,7 @@ class SubCategoriesController < ApplicationController
   private
 
   def sub_category_params
-    params.require(:sub_category).permit(:name, :description, :status, :category_id)
+    params.require(:sub_category).permit(:id, :name, :description, :status, :category_id, :favourite)
   end
 
 end

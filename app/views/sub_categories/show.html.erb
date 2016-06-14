@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header]%></h3>
+
+    <%= custom_button_1("New Article", new_article_path, "right") %>
+    <%= custom_button_2("Edit Sub Category", edit_sub_category_path(@sub_category.id), "right") %>
+
+  </div>
+
+  <% @breadcrumb ={:Home => root_path, :categories => categories_path, @sub_category.category.name => show_category_path(@sub_category.category_id), @sub_category.name => "#"} %>
+  <%= render :partial => 'layouts/bread_crumb'%>
+
+  <%= render :partial => 'articles/articles_block' %>
+</div>

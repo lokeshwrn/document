@@ -18,6 +18,9 @@ class Article < ActiveRecord::Base
   scope :latest_by_updated, -> { order("updated_at desc") }
   scope :top_rated, -> { order("rating desc") }
 
+  def category
+    self.sub_category.category
+  end
   def self.get_favourites
     fetch_values(Article.by_favs.first(6), "url_helpers.show_article_path(y.sub_category_id, y.id)")
   end

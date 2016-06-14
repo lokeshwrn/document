@@ -1,27 +1,25 @@
 class ArticlesController < ApplicationController
 
   def new
-    @page_properties.merge({:header => "New Article"})
+    @page_properties.merge!({:header => "New Article"})
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.new
   end
 
   def edit
-    @page_properties.merge({:header => "Edit Article"})
+    @page_properties.merge!({:header => "Edit Article"})
     @sub_category = SubCategory.find(params[:sub_category_id])
     @article = @sub_category.articles.find(params[:id])
   end
 
   def index
-    @page_properties.merge({:header => "Article"})
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @articles = @sub_category.articles.all.order(rating: :desc)
+    @page_properties.merge!({:header => "Articles"})
+    @articles = Article.all.order(rating: :desc)
   end
 
   def show
-    @page_properties.merge({:header => "Article"})
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.find(params[:id])
+    @article = Article.find(params[:id])
+    @page_properties.merge!({:header => @article.title})
   end
 
   def create

@@ -1,10 +1,10 @@
 <div class="breadcrumbheader">
-  <ul class="breadcrumb">
+  <ul class="breadcrumbs">
      <% @breadcrumb.each do |key,val| %>
         <% if val!="#" %>
             <li><a href="<%= val %>"><%= key.to_s.gsub('_',' ').titlecase %></a></li>
         <% else %>
-            <li><%= key.to_s.gsub('_',' ').titlecase %></li>
+            <li><span><%= key.to_s.gsub('_',' ').titlecase %></span></li>
         <% end %>
      <% end %>
   </ul>

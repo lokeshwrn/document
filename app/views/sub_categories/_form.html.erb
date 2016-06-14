@@ -1,33 +1,45 @@
-<div class="heading">
-  <span><%= @page_properties[:header]%></span>
+<div class="wrapper">
+  <div class="heading">
+    <span><%= @page_properties[:header]%></span>
+  </div>
+
+  <% @breadcrumb = {:Home => root_path, :Sub_Category => sub_categories_path} %>
+  <% @sub_category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[@sub_category.name] = show_sub_category_path(@sub_category.id); @breadcrumb[:Edit]="#") %>
+  <%= render :partial => 'layouts/bread_crumb' %>
+
+  <%= form_for @sub_category, method: :post, :url => @sub_category.new_record? ? :create_sub_category : :update_sub_category do |f| %>
+      <div class="form_container_right">
+        <div class="form_element">
+          <%= f.label :Name %>
+          <%= f.text_field :name, class: 'form_field' %>
+        </div>
+        <div class="form_element">
+          <%= f.label :Description %>
+          <%= f.text_field :description, class: 'form_field' %>
+        </div>
+        <div class="form_element">
+          <%= f.label :Category%>
+          <%= collection_select :sub_category, :category_id, Category.all, :id, :name, options={:selected => @sub_category.category.try(:id), :include_blank => '--Select Category--'}, {:class=>"cs-select cs-skin-elastic"} %>
+        </div>
+        <div class="form_element check_box">
+          <label>Status</label>
+          <%= custom_check_box_1("sub_category[status]", true, @sub_category.status, "sub_category_status") %>
+        </div>
+
+        <div class="form_element check_box">
+          <label>Make Favourite</label>
+          <%= custom_check_box_1("sub_category[favourite]", true, @sub_category.favourite, "sub_category_favourite") %>
+        </div>
+
+        <%= hidden_field_tag :id, params[:id] %>
+
+        <div class="submit_div">
+          <%= custom_submit_1("Submit", nil, "right")%>
+        </div>
+      </div>
+  <% end %>
+
+  <% @mandatory_field = ['name','description'].to_json %>
+  <% @attach_field = ['sub_category_'].to_json%>
+  <%= render :partial => 'layouts/jquery_validation' %>
 </div>
-
-<% @breadcrumb = {:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories"} %>
-<% @sub_category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[:Edit] = "#") %>
-<%= render :partial => 'layouts/bread_crumb' %>
-
-<%= form_for @sub_category, method: :post, :url => @sub_category.new_record? ? :create_sub_category : :update_sub_category do |f| %>
-    <div class="form_container_right">
-      <div class="form_element">
-        <%= f.label :Name %>
-        <%= f.text_field :name, class: 'form_field' %>
-      </div>
-      <div class="form_element">
-        <%= f.label :Description %>
-        <%= f.text_field :description, class: 'form_field' %>
-      </div>
-      <div class="form_element">
-        <%= f.label :Publish %>
-        <%= check_box_tag 'sub_category[status]', true, @sub_category.status %>
-      </div>
-      <%= hidden_field_tag :category_id, params[:category_id] %>
-      <%= hidden_field_tag :id, params[:id] %>
-      <div class="form_element" align="center">
-        <%= f.submit :submit %>
-      </div>
-    </div>
-<% end %>
-
-<% @mandatory_field = ['name','description'].to_json %>
-<% @attach_field = ['sub_category_'].to_json%>
-<%= render :partial => 'layouts/jquery_validation' %>

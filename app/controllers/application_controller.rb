@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def default_properties
     @page_properties={:page_title => "Document"}
-    @categories = Category.by_active
+    @categories = Category.by_active.first(5)
   end
 
 end

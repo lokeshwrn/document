@@ -1,36 +1,26 @@
-<%if @articles.present? %>
-  <div class="index" align="center">
-    <% @articles.each do |a| %>
-      <a href="/<%= a.id %>">
-        <div class="article">
-          <div class="head">
-            <div class="title">
-              <h3>
-                <%= a.title.upcase %>
-              </h3>
-              <h6 class="hr_line">By <%= "hello".upcase%> | <%= "welcom"%> Comments</h6>
+<%if @articles.present?%>
+    <div class="index" align="center">
+      <% @articles.each do |a| %>
+          <a href="<%= show_article_path(a.id) %>">
+            <div class="article">
+              <div class="head">
+                <div class="title">
+                  <h3><%= a.title %></h3>
+                  <h6><%= a.description %></h6>
+                </div>
+                <div class="count">
+          <span>
+            <%= a.rating%>
+          </span>
+                  <p><%= a.rating!=1 ? "Stars".pluralize : "Stars".singularize %></p>
+                </div>
+              </div>
             </div>
-
-            <div class="rating" align="center">
-              <%(1..(a.rating)).each do |q|%>
-                <span><i class="fa fa-star"></i></span>
-              <%end%>
-              <%(1..(5-a.rating)).each do |q|%>
-                <span><i class="fa fa-star-o"></i></span>
-              <%end%>
-            </div>
-
-          </div>
-          <div class="content">
-            <p><%=raw a.content%></p>
-          </div>
-        </div>
-      </a>
-
-    <% end %>
-  </div>
+          </a>
+      <% end %>
+    </div>
 <%else%>
-  <div class="index" align="center">
-    <h4>No Data to Display</h4>
-  </div>
+    <div class="index" align="center">
+      <h4>No Data to Display</h4>
+    </div>
 <%end%>

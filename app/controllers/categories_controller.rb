@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @page_properties={:header => "Category"}
+    @page_properties={:header => "Categories"}
     @category = Category.where(:status => true)
   end
 

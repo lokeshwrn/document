@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def dashboard
-    @page_properties.merge({:header => "Dashboard"})
+    @page_properties.merge!({:header => "Dashboard"})
   end
 
   def get_favs
@@ -26,7 +26,7 @@ class HomeController < ApplicationController
   def tiny_url
     @article = Article.where(id: params[:id]).last
     if @article
-      redirect_to "/sub-categories/#{@article.sub_category.id}/articles/#{@article.id}"
+      redirect_to show_article_path(@article.id)
     else
       redirect_to root_url
     end
