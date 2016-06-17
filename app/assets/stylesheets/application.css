@@ -278,14 +278,14 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 .sidebar-nav li a { text-decoration: none; color: #999; width:100%; padding:10px 0; float:left;}
 .sidebar-nav li a:hover{ background-color:#333333; text-decoration: none; color: #fff;}
 .sidebar-nav li a:active, .sidebar-nav li a:focus { text-decoration: none;}
-.sidebar-nav li i { color: #eee; display: inline; font-size: 25px; padding-right:25px;}
+.sidebar-nav li i { color: #eee; display: inline; font-size: 25px; padding: 0 25px 0 10px;}
 
 .second-level-menu{display:none;}
 .second-level-menu li { display: block; margin-left:40px;}
 
 @media(min-width:768px) {
-    #sidebar-wrapper { width: 16%; }
-    #wrapper.toggled #sidebar-wrapper { width: 4%; }
-    #page-content-wrapper { padding:0; position: relative; float:right;padding-left:16%;}
-    #wrapper.toggled #page-content-wrapper { margin-right: 0; padding-left:4%; }
+    #sidebar-wrapper { width: 200px; }
+    #wrapper.toggled #sidebar-wrapper { width: 60px; }
+    #page-content-wrapper { padding:0; position: relative; float:right;padding-left:200px;}
+    #wrapper.toggled #page-content-wrapper { margin-right: 0; padding-left:60px; }
 }
