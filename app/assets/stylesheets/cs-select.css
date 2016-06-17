@@ -115,7 +115,6 @@ div.cs-skin-elastic {
     line-height: 1.42587;
     letter-spacing: 2px;
     font-weight: 300;
-    margin: 1% 0 0 1%;
 }
 
 @media screen and (max-width: 30em) {
@@ -244,7 +243,7 @@ span.cs-placeholder{border-width: 2px 2px 1px 1px;border-style: solid;border-col
 .cs-options ul li:hover{background-color: #ddd; color: #0066cc;}
 .cs-options ul li{background-color: #eee;text-transform:capitalize;}
 .cs-active > span{background-color: #aaa!important; color: #fff!important; transition: background-color 0.5s linear !important; }
-.cs-select > span{background-color: #fff; color: #000; transition: background-color 0.3s linear; }
+.cs-select > span{background-color: #ddd; color: #000; transition: background-color 0.3s linear; }
 
 
 /*END*/

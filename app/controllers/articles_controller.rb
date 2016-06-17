@@ -2,8 +2,7 @@ class ArticlesController < ApplicationController
 
   def new
     @page_properties.merge!({:header => "New Article"})
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.new
+    @article = Article.new
   end
 
   def edit

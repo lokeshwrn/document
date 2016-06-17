@@ -1,80 +1,82 @@
-<div class="heading">
-  <span><%= @page_properties[:header]%></span>
-</div>
+<div class="wrapper">
+  <div class="heading">
+    <span><%= @page_properties[:header]%></span>
+  </div>
 
-<% @breadcrumb = {:Home => "/", :Category => "/categories", :Sub_Category => "/categories/#{@sub_category.category.id}/sub-categories", :Articles => "/sub-categories/#{@sub_category.id}/articles"} %>
-<% @sub_category.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[:Edit] = "#") %>
-<%= render :partial => 'layouts/bread_crumb' %>
+  <% @breadcrumb = {:Home => root_path, :Article => articles_path }%>
+  <% @article.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[@article.title] = show_article_path(@article.id);@breadcrumb[:Edit] = "#") %>
+  <%= render :partial => 'layouts/bread_crumb' %>
 
-<%= form_for @article, method: :post, :url => @article.new_record? ? :create_article : :update_article do |f| %>
-    <div class="form_container_right">
-      <div class="form_element">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: 'form_field' %>
+  <%= form_for @article, method: :post, :url => @article.new_record? ? :create_article : :update_article do |f| %>
+      <div class="form_container_right">
+        <div class="form_element">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: 'form_field' %>
+        </div>
+        <div class="form_element">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: 'form_field' %>
+        </div>
+
+        <input type="text" id="demo-input-local" name="blah" />
+
+        <%#= raw auto_complete_tag(name: "tag_ids", data: Category.all, selected: @article.tags, hintText: "Enter Search Terms", searchingText: "Querying", noResultsText: "No Results") %>
+
+        <div class="form_element">
+          <%= f.label :reference_url %>
+          <%= f.text_field :reference_url, class: 'form_field' %>
+        </div>
+        <div class="form_element">
+          <%= f.label :github_url %>
+          <%= f.text_field :github_url, class: 'form_field' %>
+        </div>
       </div>
-      <div class="form_element">
-        <%= f.label :description %>
-        <%= f.text_field :description, class: 'form_field' %>
+      <div class="form_container_left">
+        <%= f.label :content %>
+        <%#= f.text_area :content, class: 'form_content' %>
+        <%= f.text_area :content, class: "tinymce form_content" %>
       </div>
-
-      <input type="text" id="demo-input-local" name="blah" />
-
-      <%#= raw auto_complete_tag(name: "tag_ids", data: Category.all, selected: @article.tags, hintText: "Enter Search Terms", searchingText: "Querying", noResultsText: "No Results") %>
-
-      <div class="form_element">
-        <%= f.label :reference_url %>
-        <%= f.text_field :reference_url, class: 'form_field' %>
+      <%= f.hidden_field :sub_category_id, :value => params[:sub_category_id] %>
+      <div class="form_container_bottom" align="center">
+        <%= custom_submit_1("submit") %>
       </div>
-      <div class="form_element">
-        <%= f.label :github_url %>
-        <%= f.text_field :github_url, class: 'form_field' %>
-      </div>
-    </div>
-    <div class="form_container_left">
-      <%= f.label :content %>
-      <%#= f.text_area :content, class: 'form_content' %>
-      <%= f.text_area :content, class: "tinymce form_content" %>
-    </div>
-    <%= f.hidden_field :sub_category_id, :value => params[:sub_category_id] %>
-    <div class="form_container_bottom" align="center">
-      <%= custom_submit_1("submit") %>
-    </div>
-<% end %>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <% end %>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
 
-<% @mandatory_field = ['title','description','content'].to_json %>
-<% @attach_field = ['article_'].to_json%>
-<%= render :partial => 'layouts/jquery_validation' %>
+  <% @mandatory_field = ['title','description','content'].to_json %>
+  <% @attach_field = ['article_'].to_json%>
+  <%= render :partial => 'layouts/jquery_validation' %>
 
-<%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
-<% collection=Category.all.collect{|x| {id: x.id, name: x.name}.to_json} %>
-<% selection=nil #@article.tags.collect{|x| {id: x.id, name: x.name}.to_json} %>
+  <%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
+  <% collection=Category.all.collect{|x| {id: x.id, name: x.name}.to_json} %>
+  <% selection=nil #@article.tags.collect{|x| {id: x.id, name: x.name}.to_json} %>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#demo-input-local").tokenInput(
-                '/autocomplete?hash='+'<%= collection %>',
-                {
-                    prePopulate: <%= selection %>,
-                    preventDuplicates: true,
-                    hintText: "Enter Search Terms",
-                    searchingText: "Querying",
-                    noResultsText: "Nothing found",
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $("#demo-inputd-local").tokenInput(
+                  '/autocomplete?hash='+'<%= collection %>',
+                  {
+                      prePopulate: <%= selection %>,
+                      preventDuplicates: true,
+                      hintText: "Enter Search Terms",
+                      searchingText: "Querying",
+                      noResultsText: "Nothing found",
 //                    minChars: 2,
 //                    tokenLimit: 3,
-                    searchDelay: 1000,
-                }
-        );
-    });
+                      searchDelay: 1000,
+                  }
+          );
+      });
 
-    $('#demo-input-local').tokenInput(['{"id":1,"name":"test1"}',
-        '{"id":2,"name":"test2"}',
-        '{"id":3,"name":"test3"}'], {
-        prePopulate: [],
-        preventDuplicates: true,
-        hintText: EnterSearchTerms,
-        searchingText: Querying,
-        noResultsText: NoResults,
-        searchDelay: 1000,
-    });
-</script>
+      $('#demo-input-local').tokenInput(['{"id":1,"name":"test1"}',
+          '{"id":2,"name":"test2"}',
+          '{"id":3,"name":"test3"}'], {
+          prePopulate: [],
+          preventDuplicates: true,
+          hintText: EnterSearchTerms,
+          searchingText: Querying,
+          noResultsText: NoResults,
+          searchDelay: 1000,
+      });
+  </script>
+</div>
