@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header] %></h3>
+  </div>
+
+  <% @breadcrumb = {:Home => root_path, :Tag => tags_path } %>
+  <% @tag.new_record? ? (@breadcrumb[:New] = "#") : (@breadcrumb[@tag.name]=show_tag_path(@tag.id); @breadcrumb[:Edit] = "#") %>
+
+  <%= render :partial => 'layouts/bread_crumb'%>
+
+  <%= form_for @tag, method: :post, :url => @tag.new_record? ? :create_tag : :update_tag do |f| %>
+      <div class="form_container_right settings">
+        <div class="form_element">
+          <%= f.label :Name %>
+          <%= f.text_field :name, class: 'form_field' %>
+        </div>
+
+        <%= hidden_field_tag :id, @tag.id %>
+
+        <div class="form_element">
+          <%= f.label :Alias_Name %>
+          <%= f.text_field :alias_name, class: 'form_field' %>
+        </div>
+
+        <div class="form_element check_box">
+          <label>Status</label>
+          <%= custom_check_box_1("tag[status]", true, @tag.status, "tag_status") %>
+        </div>
+
+        <div class="form_element check_box">
+          <label>Make Favourite</label>
+          <%= custom_check_box_1("tag[favourite]", true, @tag.favourite, "tag_favourite") %>
+        </div>
+
+        <div class="submit_div">
+          <%#= f.submit :submit %>
+          <%= custom_submit_1("Submit", nil, "right")%>
+        </div>
+      </div>
+  <% end %>
+
+  <% @mandatory_field = ['name','description'].to_json %>
+  <% @attach_field = ['tag_'].to_json %>
+
+  <%= render :partial => 'layouts/jquery_validation' %>
+</div>

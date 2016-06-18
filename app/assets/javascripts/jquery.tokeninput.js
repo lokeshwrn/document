@@ -412,7 +412,7 @@ $.TokenList = function (input, url_or_data, settings) {
             }
         });
     }
-    
+
     this.getTokens = function() {
    		return saved_tokens;
    	}
@@ -461,6 +461,10 @@ $.TokenList = function (input, url_or_data, settings) {
                 hidden_input.change();
                 return false;
             });
+
+        if(!(item.id==input_box.val())) {
+            $("<input "+ "id=author_"+item.id + " type=\'text\'" + " value="+item.id  + " name="+settings.tokenName+">").appendTo(this_token).hide();
+        }
 
         // Store data on the token
         var token_data = {"id": item.id};
@@ -656,7 +660,7 @@ $.TokenList = function (input, url_or_data, settings) {
     function highlight_term(value, term) {
         return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<b>$1</b>");
     }
-    
+
     function find_value_and_highlight_term(template, value, term) {
         return template.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + value + ")(?![^<>]*>)(?![^&;]+;)", "g"), highlight_term(value, term));
     }
@@ -679,11 +683,11 @@ $.TokenList = function (input, url_or_data, settings) {
 
             $.each(results, function(index, value) {
                 var this_li = settings.resultsFormatter(value);
-                
-                this_li = find_value_and_highlight_term(this_li ,value[settings.propertyToSearch], query);            
-                
+
+                this_li = find_value_and_highlight_term(this_li ,value[settings.propertyToSearch], query);
+
                 this_li = $(this_li).appendTo(dropdown_ul);
-                
+
                 if(index % 2) {
                     this_li.addClass(settings.classes.dropdownItem);
                 } else {

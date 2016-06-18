@@ -1,0 +1,27 @@
+<%if @tag.present?%>
+    <div class="index" align="center">
+      <% @tag.each do |a| %>
+          <%# debugger %>
+          <a href="<%= show_tag_path(a.id.to_s) %>">
+            <div class="article">
+              <div class="head">
+                <div class="title">
+                  <h3><%= a.name %></h3>
+                  <h6><%= a.alias_name %></h6>
+                </div>
+                <div class="count">
+              <span>
+                <%= a.articles_count %>
+              </span>
+                  <p><%= a.articles_count!=1 ? "Article".pluralize : "Article".singularize %></p>
+                </div>
+              </div>
+            </div>
+          </a>
+      <% end %>
+    </div>
+<%else%>
+    <div class="index" align="center">
+      <h4>No Data to Display</h4>
+    </div>
+<%end%>

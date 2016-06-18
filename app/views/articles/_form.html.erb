@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="heading">
-    <span><%= @page_properties[:header]%></span>
+    <h3><%= @page_properties[:header]%></h3>
   </div>
 
   <% @breadcrumb = {:Home => root_path, :Article => articles_path }%>
@@ -18,9 +18,8 @@
           <%= f.text_field :description, class: 'form_field' %>
         </div>
 
-        <input type="text" id="demo-input-local" name="blah" />
-
-        <%#= raw auto_complete_tag(name: "tag_ids", data: Category.all, selected: @article.tags, hintText: "Enter Search Terms", searchingText: "Querying", noResultsText: "No Results") %>
+        <%#= hidden_field "tag_ids", nil, :value => nil %>
+        <%= raw custom_autocomplete("article[tag_ids]", Tag.all, "name", @article.tags) %>
 
         <div class="form_element">
           <%= f.label :reference_url %>
@@ -44,39 +43,8 @@
   <!-- Go to www.addthis.com/dashboard to customize your tools -->
 
   <% @mandatory_field = ['title','description','content'].to_json %>
-  <% @attach_field = ['article_'].to_json%>
+  <% @attach_field = ['article_'].to_json %>
   <%= render :partial => 'layouts/jquery_validation' %>
 
   <%= tinymce :plugins => ["wordcount", "paste", "preview", "code", "table"] %>
-  <% collection=Category.all.collect{|x| {id: x.id, name: x.name}.to_json} %>
-  <% selection=nil #@article.tags.collect{|x| {id: x.id, name: x.name}.to_json} %>
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-          $("#demo-inputd-local").tokenInput(
-                  '/autocomplete?hash='+'<%= collection %>',
-                  {
-                      prePopulate: <%= selection %>,
-                      preventDuplicates: true,
-                      hintText: "Enter Search Terms",
-                      searchingText: "Querying",
-                      noResultsText: "Nothing found",
-//                    minChars: 2,
-//                    tokenLimit: 3,
-                      searchDelay: 1000,
-                  }
-          );
-      });
-
-      $('#demo-input-local').tokenInput(['{"id":1,"name":"test1"}',
-          '{"id":2,"name":"test2"}',
-          '{"id":3,"name":"test3"}'], {
-          prePopulate: [],
-          preventDuplicates: true,
-          hintText: EnterSearchTerms,
-          searchingText: Querying,
-          noResultsText: NoResults,
-          searchDelay: 1000,
-      });
-  </script>
 </div>

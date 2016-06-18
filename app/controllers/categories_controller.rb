@@ -2,13 +2,13 @@ class CategoriesController < ApplicationController
 
   def index
     @page_properties={:header => "Categories"}
-    @category = Category.where(:status => true)
+    @category = Category #.where(:status => true)
   end
 
   def show
     @category = Category.find_by_id(params[:id])
     @page_properties={:header => @category.try(:name).to_s.upcase}
-    @sub_category = @category.sub_categories.where(:status=>true)
+    @sub_category = @category.sub_categories #.where(:status=>true)
   end
 
   def new

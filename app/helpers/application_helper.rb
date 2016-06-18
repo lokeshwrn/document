@@ -3,6 +3,7 @@ module ApplicationHelper
   # class << self
   #   include Rails.application.routes.url_helpers
   # end
+
   delegate :url_helpers, to: 'Rails.application.routes'
 
   def fetch_values(data, helper)
@@ -13,7 +14,7 @@ module ApplicationHelper
       hash[k]={}
       hash[k]["title"]=y.name rescue y.title
       hash[k]["url"]=eval(helper)
-      hash[k]["desc"]=y.description
+      hash[k]["desc"]=y.description rescue y.alias_name
       hash[k]["count"]=y.sub_categories.count rescue y.articles.count rescue y.rating
     end
     hash
@@ -102,6 +103,26 @@ module ApplicationHelper
     #      <input id="status" class="toggle toggle-round" type="checkbox" name="category[status]" value="true" checked="false">
     #      <label for="status"></label>
     # </div>
+  end
+
+
+  def custom_autocomplete(name, search_obj, field, populate_obj)
+    search_data=search_obj.collect{|x| {:name=>eval("x."+field), :id=>x.id}}.to_json
+    prepopulate=populate_obj.collect{|x| {:name=>eval("x."+field), :id=>x.id}}.to_json
+    id=name.gsub('[', '_').chop.gsub(']', '_').chop
+
+    auto_complete="<input type='text' id='#{id}'/>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+             $('##{id}').tokenInput(#{search_data}, {
+             prePopulate: #{prepopulate},
+             preventDuplicates: true,
+             tokenName:'#{name}[]',
+            });
+        });
+    </script>"
+
+    return auto_complete
   end
 
   def strip_html_tags(content)

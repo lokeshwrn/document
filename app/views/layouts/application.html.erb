@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -79,27 +79,6 @@
     </div>
   </div>
 </div>
-<script>
-    $('.sub-menu-toggle').click(function(e){
-        e.preventDefault();
-        $(this).next('.second-level-menu').toggle();
-        $("#wrapper").removeClass("toggled");
-        $("#menu-toggle").addClass("opened");
-    });
-
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-        $("#menu-toggle").toggleClass("opened");
-
-    });
-    (function () {
-        [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
-            new SelectFx(el);
-        });
-    })();
-
-</script>
 </body>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 </html>

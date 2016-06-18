@@ -1,2 +1,11 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header]%></h3>
+    <%= custom_button_1("New Tag", new_tag_path, "right") %>
+  </div>
+
+  <% @breadcrumb ={:Home => root_path, :Tag => "#"} %>
+  <%= render :partial => 'layouts/bread_crumb' %>
+
+  <%= render :partial => 'tags/tags_block' %>
+</div>

@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    article_params[:tag_ids] ||= params[:tag_ids]
     @article = Article.new(article_params)
     if @article.save
       redirect_to articles_path(@article.sub_category.id)
@@ -47,7 +48,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating, :sub_category_id)
+    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating, :sub_category_id, :tag_ids)
   end
 
 end

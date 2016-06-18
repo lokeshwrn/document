@@ -1,6 +1,6 @@
-class ArticleTag < ActiveRecord::Base
+class ArticleTager < ActiveRecord::Base
 
-  belongs_to :article
-  belongs_to :tag
+  # belongs_to :article
+  # belongs_to :tag
 
 end

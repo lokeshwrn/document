@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="heading">
+    <h3><%= @page_properties[:header]%></h3>
+
+    <%#= custom_button_1("New A", new_sub_category_path, "right") %>
+    <%= custom_button_2("Edit Tag", edit_tag_path(@tag.id), "right") %>
+
+  </div>
+
+  <% @breadcrumb ={:Home => root_path, :tags => tags_path, @tag.name => "#"}%>
+  <%= render :partial => 'layouts/bread_crumb'%>
+
+  <%= render :partial => 'articles/articles_block' %>
+</div>

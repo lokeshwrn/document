@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   belongs_to :user
   belongs_to :sub_category
   has_many :comments
-  has_many :tags, through: :article_tags
+  has_and_belongs_to_many :tags
 
   validates :title, presence: true
   validates :description, presence: true
@@ -21,21 +21,18 @@ class Article < ActiveRecord::Base
   def category
     self.sub_category.category
   end
+
   def self.get_favourites
-    fetch_values(Article.by_favs.first(6), "url_helpers.show_article_path(y.sub_category_id, y.id)")
+    fetch_values(Article.by_favs.first(6), "url_helpers.show_article_path(y.id)")
   end
 
   def self.get_toppers
-    fetch_values(Article.top_rated.first(6), "url_helpers.show_article_path(y.sub_category_id, y.id)")
+    fetch_values(Article.top_rated.first(6), "url_helpers.show_article_path(y.id)")
   end
 
   def self.get_search(value)
     article=Article.where("title LIKE ? or description LIKE ? OR content LIKE ?", "%#{value}%", "%#{value}%", "%#{value}%").uniq
-    fetch_values(article, "url_helpers.show_article_path(y.sub_category_id, y.id)")
-  end
-
-  def tags
-
+    fetch_values(article, "url_helpers.show_article_path(y.id)")
   end
 
 end

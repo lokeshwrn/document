@@ -237,7 +237,7 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 #menu-toggle.opened span:nth-child(2):before { transform-origin:left; transform:rotate(-45deg) translate(-50%,0%); }
 #menu-toggle.opened span:nth-child(3):before { content:"Minimize"; border-bottom:none; left:75px; }
 
-#menu-toggle span::before { border-bottom: 1px solid #fff; content: ""; left: 18%; padding: 10px; position: absolute; width: 28px; transition: all 0.5s ease; }
+#menu-toggle span::before { border-bottom: 1px solid #fff; content: ""; left: 25%; padding: 10px; position: absolute; width: 28px; transition: all 0.5s ease; }
 #menu-toggle span:nth-child(1):before { top:-10px; }
 #menu-toggle span:nth-child(2):before { top:0; }
 #menu-toggle span:nth-child(3):before { top:10px; }
@@ -290,3 +290,10 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
     #page-content-wrapper { padding:0; position: relative; float:right;padding-left:200px;}
     #wrapper.toggled #page-content-wrapper { margin-right: 0; padding-left:60px; }
 }
+
+
+
+/* ARTICLE PAGE */
+.article-content { float: left; padding-top: 20px; width: 100%; }
+.article-content .description { font-size: 20px; }
+.article-content .content p{font-size:16px; padding-top:15px;}
