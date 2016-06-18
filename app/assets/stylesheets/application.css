@@ -149,6 +149,7 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .head{ width: 100%; text-align: left; float: left; }
 .title{ width: 68%; float: left; padding: 2%; min-height:108px; }
 .rating{ width: 32%; float: right; color:green; padding: 4% 8%; }
+.title h3{font-size: 30px;}
 .count{
     width: 32%;
     float: left;
