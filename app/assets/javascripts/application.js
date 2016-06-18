@@ -28,11 +28,9 @@ $(document).ready(function(){
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
         $("#menu-toggle").toggleClass("opened");
-
+        $('.toggled .second-level-menu').hide();
     });
 });
-
-
 
 function fill_up_values(parent_div, tab_header, single_div, values){
     var x=parent_div, a=tab_header, k=single_div, v=values;
