@@ -7,8 +7,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @page_properties.merge!({:header => "Edit Article"})
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def index
@@ -25,17 +24,17 @@ class ArticlesController < ApplicationController
     article_params[:tag_ids] ||= params[:tag_ids]
     @article = Article.new(article_params)
     if @article.save
-      redirect_to articles_path(@article.sub_category.id)
+      redirect_to articles_path
     else
       render 'new'
     end
   end
 
   def update
-    @sub_category = SubCategory.find(params[:sub_category_id])
-    @article = @sub_category.articles.find(params[:id])
+    @article = Article.find(params[:id])
+    article_params[:tag_ids] ||= params[:tag_ids]
     if @article.update(article_params)
-      redirect_to articles_path(@article.sub_category.id)
+      redirect_to articles_path
     else
       render 'edit'
     end
@@ -48,7 +47,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating, :sub_category_id, :tag_ids)
+    params.require(:article).permit(:title, :description, :content, :status, :reference_url, :github_url, :rating, :sub_category_id, :tag_ids=>[])
   end
 
 end

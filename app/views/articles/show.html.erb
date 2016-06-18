@@ -1,16 +1,20 @@
 <div class="wrapper">
   <div class="heading">
     <h3><%= @page_properties[:header] %></h3>
+
+    <%= custom_button_1("Edit Article", edit_article_path(@article.id), "right") %>
+
   </div>
-  <% debugger %>
   <% @breadcrumb ={:Home => root_path, :Categories => categories_path, @article.category.name => show_category_path(@article.category.id), @article.sub_category.name => show_sub_category_path(@article.sub_category_id), @article.title => "#"} %>
   <%= render :partial => 'layouts/bread_crumb' %>
 
-  <div class="description">
-    <%= @article.description %>
-  </div>
+  <div class="article-content">
+    <div class="description">
+      <%= @article.description %>
+    </div>
 
-  <div class="content">
-    <%= raw @article.content %>
+    <div class="content">
+      <%= raw @article.content %>
+    </div>
   </div>
 </div>

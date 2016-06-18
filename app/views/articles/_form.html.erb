@@ -9,33 +9,47 @@
 
   <%= form_for @article, method: :post, :url => @article.new_record? ? :create_article : :update_article do |f| %>
       <div class="form_container_right">
+
         <div class="form_element">
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form_field' %>
         </div>
+
         <div class="form_element">
           <%= f.label :description %>
           <%= f.text_field :description, class: 'form_field' %>
         </div>
 
-        <%#= hidden_field "tag_ids", nil, :value => nil %>
-        <%= raw custom_autocomplete("article[tag_ids]", Tag.all, "name", @article.tags) %>
+        <div class="form_element">
+          <%= f.label :sub_category%>
+          <%= collection_select :article, :sub_category_id, SubCategory.all, :id, :name, options={:selected => @article.sub_category.try(:id), :include_blank => '--Select Sub Category--'}, {:class=>"cs-select cs-skin-elastic"} %>
+        </div>
 
         <div class="form_element">
           <%= f.label :reference_url %>
           <%= f.text_field :reference_url, class: 'form_field' %>
         </div>
+
         <div class="form_element">
           <%= f.label :github_url %>
           <%= f.text_field :github_url, class: 'form_field' %>
         </div>
+
+        <div class="form_element">
+          <%= f.label :tags%>
+          <%#= hidden_field "tag_ids", nil, :value => nil %>
+          <%= raw custom_autocomplete("article[tag_ids]", Tag.all, "name", @article.tags) %>
+        </div>
       </div>
+
       <div class="form_container_left">
         <%= f.label :content %>
         <%#= f.text_area :content, class: 'form_content' %>
         <%= f.text_area :content, class: "tinymce form_content" %>
       </div>
-      <%= f.hidden_field :sub_category_id, :value => params[:sub_category_id] %>
+
+      <%= hidden_field_tag :id, params[:id] %>
+
       <div class="form_container_bottom" align="center">
         <%= custom_submit_1("submit") %>
       </div>

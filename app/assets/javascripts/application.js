@@ -16,7 +16,7 @@
 //= require_tree .
 //= require tinymce
 
-//$(document).ready(function(){
+$(document).ready(function(){
     $('.sub-menu-toggle').click(function(e){
         e.preventDefault();
         $(this).next('.second-level-menu').toggle();
@@ -30,14 +30,9 @@
         $("#menu-toggle").toggleClass("opened");
 
     });
-//})
+});
 
-// select box script
-(function () {
-    [].slice.call(document.querySelectorAll('select.cs-select')).forEach(function (el) {
-        new SelectFx(el);
-    });
-})();
+
 
 function fill_up_values(parent_div, tab_header, single_div, values){
     var x=parent_div, a=tab_header, k=single_div, v=values;

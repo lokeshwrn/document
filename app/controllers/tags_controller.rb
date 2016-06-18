@@ -8,6 +8,7 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find_by_id(params[:id])
     @page_properties={:header => @tag.try(:name).to_s.upcase}
+    @articles = @tag.articles
   end
 
   def new

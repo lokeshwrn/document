@@ -32,7 +32,7 @@ mand{ color: red; }
 h3.space{margin:20px 0;}
 
 body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
-.wrapper{ width: 85%; margin: 0px auto; }
+.wrapper{ width: 85%; margin: 0px auto; padding-bottom: 100px; overflow: hidden;}
 .container-fluid{background-color: #36d7b7;}
 
 .parent-block{padding:0;margin:0;}
