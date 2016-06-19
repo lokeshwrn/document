@@ -133,4 +133,18 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('input[name="rating"]').click(function(){
+        var id=$(this).parent('.rating').attr('id');
+        var rating=$(this).val();
+        $.ajax({
+            type: "GET",
+            url: "/make_rating",
+            dataType: "json",
+            data: {"rating":rating, "id":id},
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
 });

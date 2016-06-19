@@ -15,7 +15,7 @@ module ApplicationHelper
       hash[k]["title"]=y.name rescue y.title
       hash[k]["url"]=eval(helper)
       hash[k]["desc"]=y.description rescue y.alias_name
-      hash[k]["count"]=y.sub_categories.count rescue y.articles.count rescue y.rating
+      hash[k]["count"]=(y.sub_categories.count rescue y.articles.count rescue y.rating.to_s)
     end
     hash
   end
@@ -105,6 +105,24 @@ module ApplicationHelper
     # </div>
   end
 
+  def custom_rating_1(selected=0)
+    total=""
+    (5.downto(1)).each do |x|
+      input=content_tag :input, nil, type: "radio", id: "star"+x.to_s, name: "rating", value: x, checked: ("checked" if x==selected)
+      label=content_tag :label, nil, class: "full", for: "star"+x.to_s, title: x.to_s+" Star"
+      total += (input+label)
+      input=content_tag :input, nil, type: "radio", id: "star"+x.to_s+"half", name: "rating", value: x-0.5, checked: ("checked" if (x-0.5)==selected)
+      label=content_tag :label, nil, class: "half", for: "star"+x.to_s+"half", title: (x-0.5).to_s+" Star"
+      total += (input+label)
+    end
+
+    total
+    # <input type="radio" id="star5" name="rating" value="5" />
+    # <label class = "full" for="star5" title="Awesome"></label>
+    #
+    # <input type="radio" id="star4half" name="rating" value="4.5"/>
+    # <label class="half" for="star4half" title="Pretty good"></label>
+  end
 
   def custom_autocomplete(name, search_obj, field, populate_obj)
     search_data=search_obj.collect{|x| {:name=>eval("x."+field), :id=>x.id}}.to_json

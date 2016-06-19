@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618140808) do
-
-  create_table "article_tags", force: :cascade do |t|
-    t.integer  "article_id"
-    t.integer  "tag_id"
-    t.boolean  "status",     default: false
-    t.boolean  "favourite"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
+ActiveRecord::Schema.define(version: 20160619122434) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -30,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160618140808) do
     t.boolean  "status",          default: false
     t.string   "reference_url"
     t.string   "github_url"
-    t.integer  "rating",          default: 0
+    t.float    "rating",          default: 0.0
     t.integer  "sub_category_id"
     t.boolean  "favourite"
     t.datetime "created_at",                      null: false

@@ -32,6 +32,15 @@ class HomeController < ApplicationController
     end
   end
 
+  def make_rating
+    obj=Article.find(params[:id])
+    if obj.update_column('rating', params[:rating])
+      render :json => {status: true}.to_json
+    else
+      render :json => {status: false}.to_json
+    end
+  end
+
   def tiny_url
     @article = Article.where(id: params[:id]).last
     if @article

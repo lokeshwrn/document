@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/get_toppers' => 'home#get_toppers'
   post '/get_search' => 'home#get_search'
   get '/make_favourite' => 'home#make_favourite'
+  get '/make_rating' => 'home#make_rating'
+
 
   # #  CATEGORIES ROUTES
   get '/categories/:id' => 'categories#show', :as => :show_category, :id=>/\d+/

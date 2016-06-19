@@ -13,5 +13,5 @@ ELEMENT_MAPPING={
     "categories"=>"Sub Categories",
     "sub-categories" => "Articles",
     "tags" => "Articles",
-    "articles" => "Stars"
+    "articles" => "Ratings"
 }

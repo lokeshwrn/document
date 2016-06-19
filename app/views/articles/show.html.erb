@@ -3,7 +3,12 @@
     <h3><%= @page_properties[:header] %></h3>
 
     <div class="fav <%= @article.favourite ? "already-fav" : "make-fav" %>" data-url="Article" data-id="<%= @article.id %>"></div>
+
     <%= custom_button_2("Edit Article", edit_article_path(@article.id), "right") %>
+
+    <div class="rating" id="<%= @article.id %>">
+      <%= raw custom_rating_1(@article.rating) %>
+    </div>
 
   </div>
   <% @breadcrumb ={:Home => root_path, :Categories => categories_path, @article.category.name => show_category_path(@article.category.id), @article.sub_category.name => show_sub_category_path(@article.sub_category_id), @article.title => "#"} %>
