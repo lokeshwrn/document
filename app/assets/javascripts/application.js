@@ -148,3 +148,19 @@ $(document).ready(function(){
         });
     });
 });
+
+
+ //Content Change Script  // Needs to be changed in future
+/* $(document).ready(function(){
+    $('.code p.one').each(function(){
+        var a=$(this).html();
+        var b=a.split(' ')[0];
+        $(this).html("<span>"+b+"</span>"+a.replace(b,''));
+    });
+
+    $('.code p.two').each(function(){
+        var a=$(this).html();
+        var b=a.split(' ')[0];
+        $(this).html("<span>"+b+"</span>"+a.replace(b,''));
+    });
+});*/

@@ -18,6 +18,14 @@ class Article < ActiveRecord::Base
   scope :latest_by_updated, -> { order("updated_at desc") }
   scope :top_rated, -> { order("rating desc") }
 
+  before_save :content_replace
+
+  def content_replace
+    self.content=self.content.gsub('<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ','<p class="three">')
+    self.content=self.content.gsub('<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ','<p class="two">')
+    self.content=self.content.gsub('<p>&nbsp;&nbsp; ','<p class="one">')
+  end
+
   def category
     self.sub_category.category
   end

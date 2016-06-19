@@ -327,8 +327,21 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 /* ARTICLE PAGE */
 .article-content { float: left; padding-top: 20px; width: 100%; }
 .article-content .description { font-size: 20px; }
-.article-content .content p{font-size:16px; padding-top:15px;}
+.article-content .content > p{font-size:16px; padding-top:15px; }
+.article-content .code { background-color: #eee; border-left: 4px solid #4caf50; border-radius: 3px; margin: 15px; padding: 10px; }
+.article-content .code > p { margin: 0; padding: 5px; font-size: 15px; font-style: italic; }
+.article-content h4 { font-size: 24px; padding: 15px 0; position: relative; }
+.article-content h4::before { border: 1px solid; content: ""; left: 5%; position: absolute; top: 85%; width: 10%; }
+.article-content ol, .article-content ul { padding-left: 2%; }
+.article-content ol > li, .article-content ul > li { font-size: 16px; padding-left: 10px; }
+.article-content .code p.one { padding-left: 20px; }
+.article-content .code p.one span{color:red; }
+.article-content .code p.two { padding-left: 40px; }
+.article-content .code p.two span{color:blue; }
+.article-content .code p.three { padding-left: 60px; }
 /* ######################################### */
+
+#article_content_ifr{height: 300px!important;}
 
 
 
