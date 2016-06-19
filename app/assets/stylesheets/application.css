@@ -47,7 +47,7 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .right{float:right;}
 
 
-/* FORM ELEMENTS*/
+/* FORM ELEMENTS */
 .form_container_right{ width: 50%; float: left; }
 .form_container_left{ width: 50%; float: right; }
 .form_content{ height: 250px; width: 100%; }
@@ -58,9 +58,10 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .form_element.check_box > label { display: table-cell; vertical-align: middle; width: 75%; }
 .form_element .switch{ display: table-cell; text-align: center; vertical-align: middle; width: 50%; }
 .form_element.check_box{display: table-row;}
+/* ######################################### */
 
 
-    /* MENU */
+/* MENU */
 .top-menu ul, .main-menu ul{ list-style: none; display: table; table-layout: fixed; width: 100%; }
 .top-menu ul li, .main-menu ul li{display: table-cell; text-align: center;}
 .top-menu ul li{ padding:8px 2px; font-size: 16px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;color:#fff;}
@@ -115,6 +116,7 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 
 
 /* BREADCRUMB */
+.breadcrumbheader { float: left; width: 100%; }
 .breadcrumbs > li a:after, .breadcrumbs > li span:after {
     border-bottom: 16px solid transparent;
     border-left: 12px solid #fff;
@@ -140,50 +142,74 @@ body { background-color: #fafafa; font-family: 'Roboto Condensed', sans-serif; }
 .breadcrumbs > li a:hover{background-color: #0080ff;}
 .breadcrumbs > li a:hover:after{border-left-color: #0080ff;}
 .breadcrumbs > li a:hover{color:#fff;}
+/* ######################################### */
 
 
+/* FAVOURITE ICON */
+.fav{
+    background: url(/images/heart.png) no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    height: 100px;
+    text-align: right;
+    width: 100px;
+    position: absolute;
+    top: 15%;
+}
+.make-fav {
+    animation: fave-heart-rev 1s steps(28);
+    background-position: 0 0;
+}
+.make-fav:hover {
+    background-position: -2800px 0;
+    transition: background 1s steps(28);
+}
+.already-fav {
+    animation: fave-heart 1s steps(28);
+    background-position: -2800px 0;
+}
+.already-fav:hover {
+    background-position: 0 0;
+    transition: background 1s steps(28);
+}
+@keyframes fave-heart {
+    0% { background-position: 0 0; }
+    100% { background-position: -2800px 0; }
+}
+@keyframes fave-heart-rev {
+    0% { background-position: -2800px 0; }
+    100% { background-position: 0 0; }
+}
+/* ######################################### */
+
+
+
+.index { float: left; text-align: center; width: 100%; }
 .index h3, .index h6{color:#FFF;}
 .index h3{margin-bottom:10px;}
 
 .article{ width: 32%; display: inline-block; background-color: transparent; margin: 0.5%; border: 1px solid white; border-right:none; }
-.head{ width: 100%; text-align: left; float: left; }
-.title{ width: 68%; float: left; padding: 2%; min-height:108px; }
-.rating{ width: 32%; float: right; color:green; padding: 4% 8%; }
-.title h3{font-size: 30px;}
-.count{
-    width: 32%;
-    float: left;
-    color:#2071ee;
-    text-align: center;
-    padding: 4% 2% 0;
-    border-right:2px solid #2071ee;
-    border-left:1px solid lightgray;
-    min-height:108px;
-}
-.count span{ display: inline-block; line-height: 1; font-size: 35px; margin-bottom: 5px; padding-bottom: 5px; position: relative; }
-.count span::after{
-    background: #2071ee none repeat scroll 0 0;
-    bottom: 0;
-    content: "";
-    height: 1px;
-    left: 50%;
-    margin-left: -20px;
-    position: absolute;
-    width: 40px;
-}
-.count p { line-height: 15px; padding-top: 8px; }
-.content{ height: 100px; overflow: hidden; float: left; padding: 2%; text-align: left; width: 100%; }
-
+.article .head{ width: 100%; text-align: left; float: left; }
+.article .title{ width: 68%; float: left; padding: 2%; min-height:108px; }
+.article .title h3{font-size: 30px;}
+.article .count{ width: 32%; float: left; color:#2071ee; text-align: center; padding: 4% 2% 0; border-right:2px solid #2071ee; border-left:1px solid lightgray; min-height:108px; }
+.article .count span{ display: inline-block; line-height: 1; font-size: 35px; margin-bottom: 5px; padding-bottom: 5px; position: relative; }
+.article .count span::after{ background: #2071ee none repeat scroll 0 0; bottom: 0; content: ""; height: 1px; left: 50%; margin-left: -20px; position: absolute; width: 40px; }
+.article .count p { line-height: 15px; padding-top: 8px; }
 .article:hover{ border:1px solid #2071ee; transition: all 0.9s ease 0s; }
 .article:hover .count{ color: #fff; background-color: #2071ee; transition: all 0.5s ease 0s; }
 .article:hover .title{background-color:#eee;}
 .article:hover .title h3, .article:hover .title h6{color:#2071ee;}
 
+
+
+
+
 h6.hr_line{ display: block; line-height: 1; padding-bottom: 10px; position: relative; }
 h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: ""; height: 1px; right: 0; position: absolute; width: 100%; }
 .article:hover .count span::after{ background: #fff none repeat scroll 0 0; }
 .heading > span::after{ border-bottom: 3px double #2071ee; bottom: -10px; content: " "; left: 25%; position: absolute; width: 50%; }
-.heading{ font-size: 50px; padding: 2% 0; }
+.heading{ font-size: 50px; padding: 2% 0; float:left; width:100%; position: relative;}
 .heading span{ position: relative; }
 .heading h3 { display: inline; }
 
@@ -203,6 +229,7 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 
 .button-1{color: #fff; background-color: #2071ee;}
 .button-1:hover{color: #000; background-color: transparent;}
+/* ######################################### */
 
 
 /* TAB STRUCTURE */
@@ -217,10 +244,10 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 .my-tab .nav li a span:before{ border: 1px solid; content: ""; position: absolute; top: 25px; width: 10%; transition: all 0.5s ease 0s; }
 .my-tab .nav li:hover a span, .my-tab .nav li.active a span{color:#000;}
 .my-tab .nav li:hover a span:before, .my-tab .nav li.active a span:before{width:100%;}
-
 .my-tab .tab-content{padding:2%;z-index:0;}
 .my-tab img{z-index:1; position: absolute; right: 48%; top: 200px; display:none;mix-blend-mode:multiply; }
 .my-tab .loader{opacity:0.7;}
+/* ######################################### */
 
 
 /* SEARCH FIELD */
@@ -229,6 +256,7 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 .search-form button{ height:40px; min-width:10%; background-color: transparent; border: none; position:absolute; right:25%; border-left:1px solid; }
 .search-form button i { font-size: 20px; position: absolute; right: 40%; top: 25%; transition: all 0.3s ease 0s; }
 .search-form button:hover i{ color:#666;}
+/* ######################################### */
 
 
 /* SIDE MENU */
@@ -242,6 +270,8 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 #menu-toggle span:nth-child(1):before { top:-10px; }
 #menu-toggle span:nth-child(2):before { top:0; }
 #menu-toggle span:nth-child(3):before { top:10px; }
+/* ######################################### */
+
 
 #wrapper {
     padding-left: 0;
@@ -298,3 +328,4 @@ h6.hr_line::after{ background: #000 none repeat scroll 0 0; bottom: 0; content: 
 .article-content { float: left; padding-top: 20px; width: 100%; }
 .article-content .description { font-size: 20px; }
 .article-content .content p{font-size:16px; padding-top:15px;}
+/* ######################################### */

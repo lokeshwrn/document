@@ -23,6 +23,15 @@ class HomeController < ApplicationController
     render json: a, :layout => false
   end
 
+  def make_favourite
+    obj=params[:type].constantize.find(params[:id])
+    if obj.update_column('favourite', !obj.favourite)
+      render :json => {status: true}.to_json
+    else
+      render :json => {status: false}.to_json
+    end
+  end
+
   def tiny_url
     @article = Article.where(id: params[:id]).last
     if @article

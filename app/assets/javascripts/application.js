@@ -116,3 +116,21 @@ $(document).ready(function(){
     });
 });
 
+
+$(document).ready(function(){
+    $('.fav').click(function(){
+        $(this).toggleClass('make-fav');
+        $(this).toggleClass('already-fav');
+        var type=$(this).attr('data-url');
+        var id=$(this).attr('data-id');
+        $.ajax({
+            type: "GET",
+            url: "/make_favourite",
+            dataType: "json",
+            data: {"type":type, "id":id},
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
+});

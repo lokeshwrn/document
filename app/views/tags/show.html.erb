@@ -2,6 +2,7 @@
   <div class="heading">
     <h3><%= @page_properties[:header]%></h3>
 
+    <div class="fav <%= @tag.favourite ? "already-fav" : "make-fav" %>" data-url="Tag" data-id="<%= @tag.id %>"></div>
     <%#= custom_button_1("New A", new_sub_category_path, "right") %>
     <%= custom_button_2("Edit Tag", edit_tag_path(@tag.id), "right") %>
 

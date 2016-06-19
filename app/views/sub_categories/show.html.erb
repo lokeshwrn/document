@@ -1,6 +1,7 @@
 <div class="wrapper">
   <div class="heading">
     <h3><%= @page_properties[:header]%></h3>
+    <div class="fav <%= @sub_category.favourite ? "already-fav" : "make-fav" %>" data-url="SubCategory" data-id="<%= @sub_category.id %>"></div>
 
     <%= custom_button_1("New Article", new_article_path, "right") %>
     <%= custom_button_2("Edit Sub Category", edit_sub_category_path(@sub_category.id), "right") %>
